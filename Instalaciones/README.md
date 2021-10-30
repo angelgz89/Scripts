@@ -5,10 +5,10 @@
 ## Program
 
 ```bash
-bash <(wget -qO- https://raw.githubusercontent.com/angelgz89/Scripts/Instalaciones/master/program.sh)
+bash <(wget -qO- https://raw.githubusercontent.com/angelgz89/Scripts/master/Instalaciones/program.sh)
 ```
 ## Mantenimiento
 
 ```bash
-bash <(wget -qO- https://raw.githubusercontent.com/angelgz89/Scripts/Instalaciones/master/mantenimiento.sh)
+bash <(wget -qO- https://raw.githubusercontent.com/angelgz89/Scripts/master/Instalaciones/master/mantenimiento.sh)
 ```
