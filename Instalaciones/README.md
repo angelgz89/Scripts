@@ -10,5 +10,5 @@ bash <(wget -qO- https://raw.githubusercontent.com/angelgz89/Scripts/master/Inst
 ## Mantenimiento
 
 ```bash
-bash <(wget -qO- https://raw.githubusercontent.com/angelgz89/Scripts/master/Instalaciones/master/mantenimiento.sh)
+bash <(wget -qO- https://raw.githubusercontent.com/angelgz89/Scripts/master/Instalaciones/mantenimiento.sh)
 ```
