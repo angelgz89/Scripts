@@ -145,6 +145,15 @@ function RAID ()
 	fi
 }
 
+function Onedriver ()
+{
+	sudo add-apt-repository ppa:jstaf/onedriver -y > /dev/null 2>&1
+    sudo apt update -y > /dev/null 2>&1
+    sudo apt install onedriver -y > /dev/null 2>&1
+	echo -e "${amarillo}[*]${endColour}${verde} Onedriver Instalado${endColour}"
+}
+
+
 function Basicos () 
 {
 	echo " "
