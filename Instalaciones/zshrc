@@ -1,0 +1,14 @@
+
+export ZSH="/home/angel/.oh-my-zsh"
+
+ZSH_THEME="bira"
+
+plugins=(
+git
+zsh-autosuggestions
+zsh-syntax-highlighting
+)
+
+source $ZSH/oh-my-zsh.sh
+
+alias cat='bat'

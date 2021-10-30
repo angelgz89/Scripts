@@ -1,0 +1,117 @@
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+  <h1 class="display-4">Hola, {{ usuario }}!</h1>
+  <p class="lead">Aqui tienes las inversiones.</p>
+  <hr class="my-4">
+
+    <table class="table table-dark table-bordered">
+      <thead class="thead">
+        <tr>
+          <th class="text-center col-3"></th>
+          <th class="text-center col-3">Bruto</th>
+          <th class="text-center col-3">Neto</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <th class ="text-center" scope="row">Total</th>
+          <td class ="text-center" >{{ totalb }}</td>
+          <td class ="text-center" >{{ totaln }}</td>
+        </tr>
+        <tr>
+          <th class ="text-center" scope="row">MWR</th>
+          <td class ="text-center" >{{ twrb }}</td>
+          <td class ="text-center" >{{ twrn }}</td>
+        </tr>
+        <tr>
+          <th class ="text-center" scope="row">Ganancia media</th>
+          <td class ="text-center" >{{ mediab }}</td>
+          <td class ="text-center" >{{ median }}</td>
+        </tr>
+      </tbody>
+
+    </table>
+
+    <p>Ganancia bruta de la cartera este año: <b>{{ twr }}</b> - Volatilidad: <b>{{ vol }}</b> - Sharpe: <b>{{ sharpe }}</b></p>
+    <p>Meses invertido:<b> {{ meses }}</b></p>
+
+    <!-- <hr class="my-4">
+
+    <table class="table table-striped">
+      <thead class="thead">
+        <tr>
+          <th class="text-center"></th>
+          <th class="text-center">TWR</th>
+          <th class="text-center">TRW Medio</th>
+          <th class="text-center">€</th>
+          <th class="text-center">Volatilidad</th>
+          <th class="text-center">Sharpe</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <th class ="text-center" scope="row">Baelo</th>
+          <td class ="text-center">{{ BaeloTWR }}</td>
+          <td class ="text-center">{{ BaeloTWRMedio }}</td>
+          <td class ="text-center">{{ Baelog }}</td>
+          <td class ="text-center">{{ BaeloVol }}</td>
+          <td class ="text-center">{{ BaeloSharpe }}</td>
+        </tr>
+        <tr>
+          <th class ="text-center" scope="row">Vanguard</th>
+          <td class ="text-center">{{ VanguardTWR }}</td>
+          <td class ="text-center">{{ VanguardTWRMedio }}</td>
+          <td class ="text-center">{{ Vanguardg }}</td>
+          <td class ="text-center">{{ VanguardVol }}</td>
+          <td class ="text-center">{{ VanguardSharpe }}</td>
+        </tr>
+        <tr>
+          <th class ="text-center" scope="row">Affinium</th>
+          <td class ="text-center">{{ AffiniumTWR }}</td>
+          <td class ="text-center">{{ AffiniumTWRMedio }}</td>
+          <td class ="text-center">{{ Affiniumg }}</td>
+          <td class ="text-center">{{ AffiniumVol }}</td>
+          <td class ="text-center">{{ AffiniumSharpe }}</td>
+        </tr>
+        <tr>
+          <th class ="text-center" scope="row">True Value</th>
+          <td class ="text-center">{{ TrueValueTWR }}</td>
+          <td class ="text-center">{{ TrueValueTWRMedio }}</td>
+          <td class ="text-center">{{ TrueValueg }}</td>
+          <td class ="text-center">{{ TrueValueVol }}</td>
+          <td class ="text-center">{{ TrueValueSharpe }}</td>
+        </tr>
+        <tr>
+          <th class ="text-center" scope="row">FundSmith</th>
+          <td class ="text-center">{{ FundSmithTWR }}</td>
+          <td class ="text-center">{{ FundSmithTWRMedio }}</td>
+          <td class ="text-center">{{ FundSmithg }}</td>
+          <td class ="text-center">{{ FundSmithVol }}</td>
+          <td class ="text-center">{{ FundSmithSharpe }}</td>
+        </tr>
+        <tr>
+          <th class ="text-center" scope="row">River CP</th>
+          <td class ="text-center">{{ CPTWR }}</td>
+          <td class ="text-center">{{ CPTWRMedio }}</td>
+          <td class ="text-center">{{ CPg }}</td>
+          <td class ="text-center">{{ CPVol }}</td>
+          <td class ="text-center">{{ CPSharpe }}</td>
+        </tr>
+        <tr>
+          <th class ="text-center" scope="row">MFS</th>
+          <td class ="text-center">{{ MFSTWR }}</td>
+          <td class ="text-center">{{ MFSTWRMedio }}</td>
+          <td class ="text-center">{{ MFSg }}</td>
+          <td class ="text-center">{{ MFSVol }}</td>
+          <td class ="text-center">{{ MFSSharpe }}</td>
+        </tr>
+      </tbody>
+
+    </table> -->
+
+{% endblock%}

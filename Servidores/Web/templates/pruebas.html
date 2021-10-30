@@ -1,0 +1,33 @@
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="jumbotron">
+  <h1 class="display-4">Hola, {{ usuario }}!</h1>
+  <p class="lead">Esta pagina es para tus pruebas.</p>
+  <hr class="my-4">
+  
+  <input type="text" id="id_nombre" name="name">
+  <br><br>
+  
+  <button class="btn btn-primary btn-lg" onclick="prueba()">Prueba</button>
+  
+  <hr class="my-4">
+  <div>El resultado es: </div>
+  <div id="resultado"></div>
+</div>
+
+<div class="jumbotron">
+  <h1>Navbar example</h1>
+  <p class="lead">This example is a quick exercise to illustrate how the top-aligned navbar works. As you scroll, this navbar remains in its original position and moves with the rest of the page.</p>
+  <a class="btn btn-lg btn-primary" href="../../components/navbar/" role="button">View navbar docs &raquo;</a>
+</div>
+
+<div class="jumbotron">
+  <h1>Navbar example</h1>
+  <p class="lead">This example is a quick exercise to illustrate how the top-aligned navbar works. As you scroll, this navbar remains in its original position and moves with the rest of the page.</p>
+  <a class="btn btn-lg btn-primary" href="../../components/navbar/" role="button">View navbar docs &raquo;</a>
+</div>
+
+{% endblock%}

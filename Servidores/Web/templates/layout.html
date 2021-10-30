@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+  <html lang="es">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Pagina web Angel</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/navbar-static/">
+
+    <!-- BOOTSTRAP 4 CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- SCRIPTS -->
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+    <script src="Web/static/js/main.js"></script>
+
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    
+  </head>
+
+  <body class="bg-light">
+
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4 navbar-fixed-top">
+        
+          <!-- <img class="navbar-brand" src="images/logo.png" alt="Logo"> -->
+
+        <a class="navbar-brand" href="{{ url_for('home') }}">Web Angel</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+          <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="nav navbar-nav">
+
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('inversiones') }}">Inversiones</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('dieta') }}">Dieta</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('pruebas') }}">Pruebas</a>
+              </li>
+
+            </ul>
+
+          </div>
+
+      </nav>
+    </header>
+
+    <main role="main" class="container">
+      {% block content %}
+
+      {% endblock%}
+    </main>
+
+  </body>
+</html>

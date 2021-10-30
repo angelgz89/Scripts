@@ -1,0 +1,23 @@
+
+docker network create prestashop-net
+
+docker run -ti --name mysql --network prestashop-net -v /opt/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_DATABASE=prestashop -p 3307:3306 -d mysql:5.7
+
+docker run -ti --name prestashop --network prestashop-net -v /opt/prestashop:/var/www/html -e DB_SERVER=mysql -p 8080:80 -d prestashop/prestashop
+
+
+docker exec -it prestashop bash
+rm -r install
+mv admin adminprueba
+
+
+COMANDOS DOCKER
+
+docker run -ti --name ubuntu -v /Users/angel/Downloads/docker:/home ubuntu:20.04
+
+docker run -ti --name ubuntu ubuntu:20.04
+
+
+docker run --name mariadb2 -v /Users/angel/Downloads/docker/bbdd:/var/lib/mysql -e MYSQL_DATABASE=datos -e MYSQL_USER=angel -e MYSQL_ROOT_PASSWORD=admin -p 3307:3306 -d mariadb:10.5.9-focal
+
+
