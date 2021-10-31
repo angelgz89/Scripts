@@ -47,6 +47,7 @@ sshpass -p $contrasenia ssh -t -p$puerto $usuario@$servidor bash -c "'
 echo prueba
 cat $home/id_rsa.pub >> /home/angel/.ssh/authorized_keys
 chmod 600 $home/.ssh/authorized_keys
+rm -R ~/id_rsa.pub
 '"
 
 clear
