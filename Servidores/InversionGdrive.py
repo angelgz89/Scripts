@@ -2,10 +2,16 @@
 
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-from time import sleep
+
+
+import selenium
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+from time import sleep
 from datetime import date
 from dateutil import rrule
+
 import os
 import os.path
 import sys
@@ -46,7 +52,7 @@ def buscarArchivo(archivo):
 def conexionGdrive():
     
     alcance  = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
-    creds  =  ServiceAccountCredentials.from_json_keyfile_name(("/home/angel/Scripts/Servidores/inversion-313707-c4dc97948892.json"), alcance)
+    creds  =  ServiceAccountCredentials.from_json_keyfile_name(("/home/angel/Servidores/inversion-clave.json"), alcance)
     client = gspread.authorize(creds)
 
     # obtener la instancia de la hoja de calculo
@@ -69,7 +75,7 @@ def accesoInversis():
     options.add_argument('--disable-gpu')
     options.add_argument('--profile-directory=Default')
     options.add_argument('--user-data-dir=/tmp')
-    #options.add_experimental_option('excludeSwitches', ['enable-logging'])
+    options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
     # Ejecuta chrome con las opciones especificadas arriba #Si no le pasas argumentos se ejecuta normal
     #driver = webdriver.Chrome(executable_path=path, options=options)
@@ -78,46 +84,58 @@ def accesoInversis():
 
     driver.get("https://www.inversis.com/?cobranding=cbandbank")  # Accede a la URL
     # Accede a un elemento de la pagina web mediante la clase y clicka
-    driver.find_element_by_class_name("btns").click()
+    #driver.find_element_by_class_name("btns").click()
+    driver.find_element(By.CLASS_NAME, "btns").click()
+
     # Accede a un elemento de la pagina web mediante la el nombre y marca para despues escribir
-    usuario = driver.find_element_by_name("codigoUsuario")
+    #usuario = driver.find_element_by_name("codigoUsuario")
+    usuario = driver.find_element(By.NAME, "codigoUsuario")
     # Accede a un elemento de la pagina web mediante la el nombre y marca para despues escribir
-    contrasenia = driver.find_element_by_name("claveUsuario")
+    #contrasenia = driver.find_element_by_name("claveUsuario")
+    contrasenia = driver.find_element(By.NAME, "claveUsuario")
 
     usuario.send_keys("agz2712")  # Introduce el usuario
     contrasenia.send_keys("11AP2Nagz")  # Introduce la contraseña
     sleep(1)
     # Accede a un elemento de la pagina web mediante la el nombre y clicka
-    driver.find_element_by_name("entrar").click()
+    #driver.find_element_by_name("entrar").click()
+    driver.find_element(By.NAME, "entrar").click()
 
     sleep(5)
     driver.get("https://www.inversis.com/trans/inversis/SvlConsultarCarteraReal?CABECERA.TIPO_PRODUCTO=CV&origen=DETALLE")
 
-    fund = driver.find_element_by_xpath("//*[@id='contraValorEURActual_B1_603988']")
+    #fund = driver.find_element_by_xpath("//*[@id='contraValorEURActual_B1_603988']")
+    fund = driver.find_element(By.XPATH, "//*[@id='contraValorEURActual_B1_603988']")
     fund = float(fund.text.replace('.','').replace(',','.'))
     lista.append(fund)
 
-    mfs = driver.find_element_by_xpath("//*[@id='contraValorEURActual_B1_261962']")
+    #mfs = driver.find_element_by_xpath("//*[@id='contraValorEURActual_B1_261962']")
+    mfs = driver.find_element(By.XPATH, "//*[@id='contraValorEURActual_B1_261962']")
     mfs=float(mfs.text.replace('.','').replace(',','.'))
     lista.append(mfs)
 
-    vanguard = driver.find_element_by_xpath("//*[@id='contraValorEURActual_B1_459341']")
+    #vanguard = driver.find_element_by_xpath("//*[@id='contraValorEURActual_B1_459341']")
+    vanguard = driver.find_element(By.XPATH, "//*[@id='contraValorEURActual_B1_459341']")
     vanguard=float(vanguard.text.replace('.','').replace(',','.'))
     lista.append(vanguard)
 
-    affinium = driver.find_element_by_xpath("//*[@id='contraValorEURActual_B1_786408']")
+    #affinium = driver.find_element_by_xpath("//*[@id='contraValorEURActual_B1_786408']")
+    affinium = driver.find_element(By.XPATH, "//*[@id='contraValorEURActual_B1_786408']")
     affinium=float(affinium.text.replace('.','').replace(',','.'))
     lista.append(affinium)
 
-    baelo = driver.find_element_by_xpath("//*[@id='contraValorEURActual_B1_622586']")
+    #baelo = driver.find_element_by_xpath("//*[@id='contraValorEURActual_B1_622586']")
+    baelo = driver.find_element(By.XPATH, "//*[@id='contraValorEURActual_B1_622586']")
     baelo=float(baelo.text.replace('.','').replace(',','.'))
     lista.append(baelo)
 
-    cp = driver.find_element_by_xpath("//*[@id='contraValorEURActual_B1_588240']")
+    #cp = driver.find_element_by_xpath("//*[@id='contraValorEURActual_B1_588240']")
+    cp = driver.find_element(By.XPATH, "//*[@id='contraValorEURActual_B1_588240']")
     cp=float(cp.text.replace('.','').replace(',','.'))
     lista.append(cp)
 
-    truevalue = driver.find_element_by_xpath("//*[@id='contraValorEURActual_B1_376662']")
+    #truevalue = driver.find_element_by_xpath("//*[@id='contraValorEURActual_B1_376662']")
+    truevalue = driver.find_element(By.XPATH, "//*[@id='contraValorEURActual_B1_376662']")
     truevalue=float(truevalue.text.replace('.','').replace(',','.'))
     lista.append(truevalue)
 
@@ -143,7 +161,7 @@ def actualizarexcel():
     # totalanterior = Resumen.acell("D8").value
     # Resumen.update_acell("D12",totalanterior)
     
-    Inversion2021  =  Inversion.worksheet(anio)
+    Inversion1  =  Inversion.worksheet(anio)
 
     rangoBaelo = ("C" + str(3 + mes))
     rangoCP = ("W" + str(3 + mes))
@@ -155,15 +173,15 @@ def actualizarexcel():
     # rangoJPMTEC = ("M" + str(39 + mes))
     # rangoHidro = ("W" + str(39 + mes))
 
-    Inversion2021.update_acell(rangoFundsmith, lista[0])
-    #Inversion2021.update_acell(rangoJPMTEC, lista[1])
-    Inversion2021.update_acell(rangoMFS, lista[1])
-    Inversion2021.update_acell(rangoVanguard, lista[2])
-    Inversion2021.update_acell(rangoAffinium, lista[3])
-    Inversion2021.update_acell(rangoBaelo, lista[4])
-    Inversion2021.update_acell(rangoCP, lista[5])
-    #Inversion2021.update_acell(rangoHidro,lista[7])
-    Inversion2021.update_acell(rangoTrue, lista[6])
+    Inversion1.update_acell(rangoFundsmith, lista[0])
+    #Inversion1.update_acell(rangoJPMTEC, lista[1])
+    Inversion1.update_acell(rangoMFS, lista[1])
+    Inversion1.update_acell(rangoVanguard, lista[2])
+    Inversion1.update_acell(rangoAffinium, lista[3])
+    Inversion1.update_acell(rangoBaelo, lista[4])
+    Inversion1.update_acell(rangoCP, lista[5])
+    #Inversion1.update_acell(rangoHidro,lista[7])
+    Inversion1.update_acell(rangoTrue, lista[6])
 
 def media():
     
