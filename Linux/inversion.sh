@@ -1,3 +1,3 @@
 #!/bin/bash
 
-/bin/python3 /home/angel/Scripts/Servidores/InversionGdrive.py
+/bin/python3 /home/angel/Servidores/InversionGdrive.py
