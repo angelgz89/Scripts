@@ -65,7 +65,6 @@ function Basicos ()
 
 	sudo apt install git -y > /dev/null 2>&1
 	sudo apt install neofetch -y > /dev/null 2>&1
-	sudo apt install synaptic -y > /dev/null 2>&1
 	sudo apt install samba -y > /dev/null 2>&1
 	sudo apt install wget -y > /dev/null 2>&1
     sudo apt install cockpit -y > /dev/null 2>&1
@@ -76,9 +75,6 @@ function Basicos ()
     sudo apt install rsync -y > /dev/null 2>&1
     
     sudo apt-get install lm-sensors -y > /dev/null 2>&1
-    sudo apt install psensor -y > /dev/null 2>&1
-    sudo apt-get install hddtemp -y > /dev/null 2>&1
-    # sudo hddtemp /dev/sda 
 
 	sudo dpkg -l | grep -i "binutils" > /dev/null 2>&1
 	if [ "$(echo $?)" == "1" ]
@@ -149,3 +145,27 @@ Basicos
 actualizarlimpiar
 sudo apt dist-upgrade -y 
 sudo rpi-update -y
+
+echo -e "${turquesa}Instalar No-Ip Agent?: (s / n)${endColour}"
+read confirmacion
+
+if [ $confirmacion == "s" ];
+then
+    cd /usr/local/src
+    sudo wget http://www.no-ip.com/client/linux/noip-duc-linux.tar.gz
+    sudo tar xzf noip-duc-linux.tar.gz
+    cd noip-2.1.9-1
+    sudo make
+    sudo make install
+    # sudo /usr/local/bin/noip2 -C
+    echo -e "${amarillo}[*]${endColour}${verde} No-Ip Agent Instalado ${endColour}"
+
+    # systemctl enable noip2.service (start on boot)
+    # systemctl start noip2.service (start immediately)
+    # systemctl status noip2.service (for status)
+fi
+
+actualizarlimpiar
+
+git config --global user.name angelgz89
+git config --global user.email agz2712@gmail.com
