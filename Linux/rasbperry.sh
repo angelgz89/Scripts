@@ -23,12 +23,6 @@ function actualizarlimpiar()
 	sudo apt update -y > /dev/null 2>&1
 	sudo apt autoremove -y > /dev/null 2>&1
 	sudo apt --fix-broken install -y > /dev/null 2>&1
-    rm -rf ~/.local/share/Trash/*
-    # sudo rm -rf /tmp/*
-    # sudo rm -vfr /tmp/* >/dev/null 2>&1
-    # rm -vfr /var/tmp/* >/dev/null 2>&1
-	# sudo apt unattended-upgrades
-	# sudo dpkg-reconfigure --priority=low unattended-upgrades
 }
 
 function ZSH ()
