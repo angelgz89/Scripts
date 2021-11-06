@@ -1,6 +1,19 @@
-#!/bin/bash
+#! /bin/bash
+# -*- ENCODING: UTF-8 -*-
 
-echo -e "${lila}Por favor, introduce la contraseña de administrador para usar el programa: ${endColour}"
+# Author: M4h0uT
+
+#Colours
+verde="\e[0;32m\033[1m"
+endColour="\033[0m\e[0m"
+rojo="\e[0;31m\033[1m"
+turquesa="\e[0;34m\033[1m"
+amarillo="\e[0;33m\033[1m"
+lila="\e[0;35m\033[1m"
+turquesa="\e[0;36m\033[1m"
+gris="\e[0;37m\033[1m"
+
+echo "Por favor, introduce la contraseña de administrador para usar el programa:"
 read -s cont
 
 function actualizarlimpiar()
@@ -20,9 +33,7 @@ function actualizarlimpiar()
 
 function ZSH ()
 {
-	sudo dpkg -l | grep -i "zsh" > /dev/null 2>&1
-	if [ "$(echo $?)" == "1" ];
-	then
+
 		sudo apt install -y zsh > /dev/null 2>&1
 		wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 		sudo git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions > /dev/null 2>&1
@@ -42,8 +53,6 @@ function ZSH ()
 		export PATH="$PATH:$HOME/Scripts/Linux"' > .zshrc
 
 		echo $cont | chsh -s `which zsh`
-
-		echo -e "${amarillo}[*]${endColour}${verde} ZSH Instalado${endColour}"
 	fi
 }
 
@@ -64,7 +73,7 @@ function SSH ()
 function Basicos () 
 {
 	echo " "
-	echo -e "${lila}Instalando Programas...${endColour}"
+	echo "Instalando Programas..."
 
 	sudo apt install git -y > /dev/null 2>&1
 	sudo apt install neofetch -y > /dev/null 2>&1
@@ -128,13 +137,6 @@ function Basicos ()
 		sudo apt install net-tools -y > /dev/null 2>&1
 		echo -e "${amarillo}[*]${endColour}${verde} Net-tools Instalado${endColour}"
 	fi
-	
-	# sudo dpkg -l | grep -i "" > /dev/null 2>&1
-	# if [ "$(echo $?)" == "1" ]
-	# then
-	# 	sudo apt install  -y > /dev/null 2>&1
-	# echo -e "${amarillo}[*]${endColour}${verde} XXX ${endColour}"
-	# fi
 
 	ZSH
     PIP
