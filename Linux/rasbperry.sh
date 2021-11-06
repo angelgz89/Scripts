@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo -e "${lila}Por favor, introduce la contraseña de administrador para usar el programa: ${endColour}"
+read -s cont
+
 function actualizarlimpiar()
 {
 	sudo apt update -y > /dev/null 2>&1
