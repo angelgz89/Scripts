@@ -18,11 +18,12 @@ read -s cont
 
 function actualizarlimpiar()
 {
-	sudo apt update -y > /dev/null 2>&1
-	sudo apt full-upgrade -y > /dev/null 2>&1
-	sudo apt update -y > /dev/null 2>&1
-	sudo apt autoremove -y > /dev/null 2>&1
-	sudo apt --fix-broken install -y > /dev/null 2>&1
+	sudo apt update -y
+	sudo apt full-upgrade -y
+	sudo apt dist-upgrade -y
+	sudo apt update -y
+	sudo apt autoremove -y
+	sudo apt --fix-broken install
 }
 
 function ZSH ()
