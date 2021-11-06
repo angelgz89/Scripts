@@ -1,0 +1,151 @@
+#!/bin/bash
+
+function actualizarlimpiar()
+{
+	sudo apt update -y > /dev/null 2>&1
+	sudo apt full-upgrade -y > /dev/null 2>&1
+	sudo apt update -y > /dev/null 2>&1
+	sudo apt autoremove -y > /dev/null 2>&1
+	sudo apt --fix-broken install -y > /dev/null 2>&1
+    rm -rf ~/.local/share/Trash/*
+    # sudo rm -rf /tmp/*
+    # sudo rm -vfr /tmp/* >/dev/null 2>&1
+    # rm -vfr /var/tmp/* >/dev/null 2>&1
+	# sudo apt unattended-upgrades
+	# sudo dpkg-reconfigure --priority=low unattended-upgrades
+}
+
+function ZSH ()
+{
+	sudo dpkg -l | grep -i "zsh" > /dev/null 2>&1
+	if [ "$(echo $?)" == "1" ];
+	then
+		sudo apt install -y zsh > /dev/null 2>&1
+		wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
+		sudo git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions > /dev/null 2>&1
+		sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting > /dev/null 2>&1
+		echo ' ' > .zshrc
+		echo '
+		export ZSH=$HOME/.oh-my-zsh
+
+		ZSH_THEME="bira"
+
+		plugins=(git
+		zsh-autosuggestions
+		zsh-syntax-highlighting
+		)
+		source $ZSH/oh-my-zsh.sh
+		
+		export PATH="$PATH:$HOME/Scripts/Linux"' > .zshrc
+
+		echo $cont | chsh -s `which zsh`
+
+		echo -e "${amarillo}[*]${endColour}${verde} ZSH Instalado${endColour}"
+	fi
+}
+
+function PIP ()
+{
+	sudo pip3 install gspread
+	sudo pip3 install selenium
+	sudo pip3 install oauth2client
+	sudo pip3 install paho-mqtt
+}
+
+function SSH () 
+{
+	sudo apt install -y openssh-client openssh-server openssh-sftp-server -y > /dev/null 2>&1
+	sudo touch ~/.hushlogin
+}
+
+function Basicos () 
+{
+	echo " "
+	echo -e "${lila}Instalando Programas...${endColour}"
+
+	sudo apt install git -y > /dev/null 2>&1
+	sudo apt install neofetch -y > /dev/null 2>&1
+	sudo apt install synaptic -y > /dev/null 2>&1
+	sudo apt install samba -y > /dev/null 2>&1
+	sudo apt install wget -y > /dev/null 2>&1
+    sudo apt install cockpit -y > /dev/null 2>&1
+    systemctl restart cockpit
+
+    sudo apt-get install build-essential gcc make perl dkms -y > /dev/null 2>&1
+    sudo apt install software-properties-common apt-transport-https -y > /dev/null 2>&1
+    sudo apt install rsync -y > /dev/null 2>&1
+    
+    sudo apt-get install lm-sensors -y > /dev/null 2>&1
+    sudo apt install psensor -y > /dev/null 2>&1
+    sudo apt-get install hddtemp -y > /dev/null 2>&1
+    # sudo hddtemp /dev/sda 
+
+	sudo dpkg -l | grep -i "binutils" > /dev/null 2>&1
+	if [ "$(echo $?)" == "1" ]
+	then
+		sudo apt install binutils -y > /dev/null 2>&1
+		echo -e "${amarillo}[*]${endColour}${verde} Binutils Instalado${endColour}"
+	fi
+
+	sudo dpkg -l | grep -i "python3-pip" > /dev/null 2>&1
+	if [ "$(echo $?)" == "1" ]
+	then
+		sudo apt install python3 python3-pip -y > /dev/null 2>&1
+        PIP
+		echo -e "${amarillo}[*]${endColour}${verde} Python3 Instalado${endColour}"
+	fi
+
+	sudo dpkg -l | grep -i "mosquitto" > /dev/null 2>&1
+	if [ "$(echo $?)" == "1" ]
+	then
+		sudo apt install mosquitto mosquitto-clients -y > /dev/null 2>&1
+		echo -e "${amarillo}[*]${endColour}${verde} Mosquitto Instalado${endColour}"
+	fi
+
+	sudo dpkg -l | grep -i "htop" > /dev/null 2>&1
+	if [ "$(echo $?)" == "1" ]
+	then
+		sudo apt install htop -y > /dev/null 2>&1
+		echo -e "${amarillo}[*]${endColour}${verde} Htop Instalado${endColour}"
+	fi
+
+	sudo dpkg -l | grep -i "wakeonlan" > /dev/null 2>&1
+	if [ "$(echo $?)" == "1" ]
+	then
+		sudo apt install wakeonlan -y > /dev/null 2>&1
+		echo -e "${amarillo}[*]${endColour}${verde} WakeOnLan Instalado${endColour}"
+	fi
+
+	sudo dpkg -l | grep -i "chromium-chromedriver" > /dev/null 2>&1
+	if [ "$(echo $?)" == "1" ]
+	then
+		sudo apt install chromium-driver -y > /dev/null 2>&1
+		echo -e "${amarillo}[*]${endColour}${verde} Chronium-driver Instalado${endColour}"
+	fi
+
+	sudo dpkg -l | grep -i "net-tools" > /dev/null 2>&1
+	if [ "$(echo $?)" == "1" ]
+	then
+		sudo apt install net-tools -y > /dev/null 2>&1
+		echo -e "${amarillo}[*]${endColour}${verde} Net-tools Instalado${endColour}"
+	fi
+	
+	# sudo dpkg -l | grep -i "" > /dev/null 2>&1
+	# if [ "$(echo $?)" == "1" ]
+	# then
+	# 	sudo apt install  -y > /dev/null 2>&1
+	# echo -e "${amarillo}[*]${endColour}${verde} XXX ${endColour}"
+	# fi
+
+	ZSH
+    PIP
+	actualizarlimpiar
+    SSH
+}
+
+######################################
+actualizarlimpiar
+Basicos
+actualizarlimpiar
+sudo apt dist-upgrade -y 
+sudo rpi-update -y
