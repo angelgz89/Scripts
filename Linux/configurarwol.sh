@@ -20,7 +20,7 @@ Description=Configure Wake On LAN
 
 [Service]
 Type=oneshot
-ExecStart=/sbin/ethtool -s $interfaz wol g
+ExecStart=/sbin/ethtool -s '$interfaz' wol g
 
 [Install]
 WantedBy=basic.target' >> wol.service
