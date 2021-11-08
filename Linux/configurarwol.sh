@@ -13,10 +13,9 @@ echo $cont | sudo apt install ethtool -y
 echo $cont | sudo ethtool -s $interfaz wol g
 echo $cont | sudo apt install wakeonlan -y
 
-sudo touch /etc/systemd/system/wol.service
+touch wol.service
 
-sudo echo '
-[Unit]
+echo '[Unit]
 Description=Configure Wake On LAN
 
 [Service]
@@ -24,9 +23,10 @@ Type=oneshot
 ExecStart=/sbin/ethtool -s $interfaz wol g
 
 [Install]
-WantedBy=basic.target
-' >> /etc/systemd/system/wol.service
+WantedBy=basic.target' >> wol.service
 
-echo $cont | sudo systemctl daemon-reload
-echo $cont | sudo systemctl enable wol.service
-echo $cont | sudo systemctl start wol.service
+sudo cp wol.service /etc/systemd/system/
+
+sudo systemctl daemon-reload
+sudo systemctl enable wol.service
+sudo systemctl start wol.service
