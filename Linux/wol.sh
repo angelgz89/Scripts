@@ -16,5 +16,6 @@ read b
 
 if [ $b = "s" ];
 then
-	wakeonlan -i 192.168.1.111 -p 9 1C:83:41:28:1C:6E
+	#wakeonlan -i 192.168.1.111 -p 9 1C:83:41:28:1C:6E
+	wakeonlan 1C:83:41:28:1C:6E
 fi
