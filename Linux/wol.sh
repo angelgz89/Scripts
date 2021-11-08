@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#sudo apt install ethtool -y
+#sudo ethtool -s INTERFACE wol g
+
 echo "Quieres despertar Macro server? 1"
 read a
 
