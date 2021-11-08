@@ -1,5 +1,5 @@
 
-#!/bin/bash
+#! /bin/bash
 # -*- ENCODING: UTF-8 -*-
 # Author: M4h0uT
 
