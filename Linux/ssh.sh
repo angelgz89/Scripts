@@ -38,7 +38,7 @@ read a
 
 if [ $a == "n" ];
 then
-    ssh-keygen -t rsa -b 4096 /dev/null 2>&1
+    ssh-keygen -t rsa -b 4096
 fi
 
 sshpass -p $contrasenia scp -P$puerto $HOME/.ssh/id_rsa.pub $usuario@$servidor:
