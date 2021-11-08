@@ -9,8 +9,8 @@ read interfaz
 echo "Por favor, introduce la contraseña de administrador para usar el programa:"
 read -s cont
 
-echo $cont | sudo -s apt update -y
-echo $cont | sudo -s apt install ethtool -y
+echo $cont | sudo -S apt update -y
+sudo apt install ethtool -y
 sudo ethtool -s $interfaz wol g
 sudo apt install wakeonlan -y
 
