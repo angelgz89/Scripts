@@ -28,6 +28,8 @@ WantedBy=basic.target' >> wol.service
 
 sudo cp wol.service /etc/systemd/system/
 
+rm -R wol.service
+
 sudo systemctl daemon-reload
 sudo systemctl enable wol.service
 sudo systemctl start wol.service
