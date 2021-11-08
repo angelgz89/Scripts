@@ -19,7 +19,7 @@ fi
 
 ping -c 1 $IP > /dev/null 2>&1
 
-#timeout 1 bash -c '"ping -c 1" $IP' &>/dev/null 
+#timeout 1 bash -c "ping -c 1 $IP" &>/dev/null 
 
 if [ "$(echo $?)" == "0" ];
 then
