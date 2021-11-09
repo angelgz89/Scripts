@@ -1,8 +1,5 @@
 #! /bin/bash
 
-#sudo apt install ethtool -y
-#sudo ethtool -s INTERFACE wol g
-
 echo "Quieres despertar Macro server? (s/n))"
 read a
 
@@ -18,4 +15,12 @@ if [ $b = "s" ];
 then
 	#wakeonlan -i 192.168.1.111 -p 9 1C:83:41:28:1C:6E
 	wakeonlan 1C:83:41:28:1C:6E
+fi
+
+echo "Quieres despertar MiniMacroServer? (s/n))"
+read c
+
+if [ $c = "s" ];
+then
+	wakeonlan 18:C0:4D:D1:F8:96
 fi
