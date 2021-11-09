@@ -5,7 +5,7 @@ read a
 
 if [ $a = "s" ];
 then
-	wakeonlan -i 192.168.1.101 -p 9 FC:34:97:66:DE:0E
+	wakeonlan FC:34:97:66:DE:0E
 fi
 
 echo "Quieres despertar MiniPc? (s/n))"
