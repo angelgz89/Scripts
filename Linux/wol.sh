@@ -22,5 +22,5 @@ read c
 
 if [ $c = "s" ];
 then
-	wakeonlan 18:C0:4D:D1:F8:96
+	wakeonlan 3C:7C:3F:C1:82:CA
 fi
