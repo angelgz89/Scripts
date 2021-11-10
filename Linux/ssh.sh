@@ -2,9 +2,13 @@
 
 clear
 
-if [ $(uname) == "linux" ];
+if [ $(uname) == "Linux" ];
 then
-    sudo apt-get install sshpass
+    sudo dpkg -l | grep -i "sshpass" > /dev/null 2>&1
+    if [ "$(echo $?)" == "1" ]
+    then
+        sudo apt install sshpass -y > /dev/null 2>&1
+    fi
 fi
 
 if [ $(uname) == "Darwin" ];

@@ -309,7 +309,8 @@ function Plank ()
 
 function SSH () 
 {
-	sudo apt install -y openssh-client openssh-server openssh-sftp-server -y > /dev/null 2>&1
+	sudo apt install openssh-client openssh-server openssh-sftp-server -y > /dev/null 2>&1
+    sudo apt install sshpass -y > /dev/null 2>&1
 	sudo touch ~/.hushlogin
 }
 
