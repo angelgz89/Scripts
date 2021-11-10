@@ -48,7 +48,7 @@ fi
 
 sshpass -p $contrasenia scp ~/.ssh/id_rsa.pub $usuario@$servidor:
 
-sshpass -p $contrasenia ssh -t $usuario@$servidor bash -c "'
+sshpass -p $contrasenia ssh -t -p$puerto $usuario@$servidor bash -c "'
 cat ~/id_rsa.pub >> ~/.ssh/authorized_keys
 chmod 600 ~/.ssh/authorized_keys
 rm -R ~/id_rsa.pub
@@ -60,7 +60,7 @@ read a
 
 if [ $a == "s" ];
 then
-    sshpass -p $contrasenia ssh -t $usuario@$servidor
+    sshpass -p $contrasenia ssh -t -p$puerto $usuario@$servidor
 else
     echo "Adios"
 fi
