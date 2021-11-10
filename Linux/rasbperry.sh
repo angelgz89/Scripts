@@ -29,26 +29,25 @@ function actualizarlimpiar()
 function ZSH ()
 {
 
-		sudo apt install -y zsh > /dev/null 2>&1
-		wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
-		sudo git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions > /dev/null 2>&1
-		sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting > /dev/null 2>&1
-		echo ' ' > .zshrc
-		echo '
-		export ZSH=$HOME/.oh-my-zsh
+	sudo apt install -y zsh > /dev/null 2>&1
+	wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
+	sudo git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions > /dev/null 2>&1
+	sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting > /dev/null 2>&1
+	echo ' ' > .zshrc
+	echo '
+	export ZSH=$HOME/.oh-my-zsh
 
-		ZSH_THEME="bira"
+	ZSH_THEME="bira"
 
-		plugins=(git
-		zsh-autosuggestions
-		zsh-syntax-highlighting
-		)
-		source $ZSH/oh-my-zsh.sh
-		
-		export PATH="$PATH:$HOME/Scripts/Linux"' > .zshrc
+	plugins=(git
+	zsh-autosuggestions
+	zsh-syntax-highlighting
+	)
+	source $ZSH/oh-my-zsh.sh
+	
+	export PATH="$PATH:$HOME/Scripts/Linux"' > .zshrc
 
-		echo $cont | chsh -s `which zsh`
-	fi
+	echo $cont | chsh -s `which zsh`
 }
 
 function PIP ()
@@ -56,12 +55,14 @@ function PIP ()
 	sudo pip3 install gspread
 	sudo pip3 install selenium
 	sudo pip3 install oauth2client
+	sudo pip3 intall python-dateutil
 	sudo pip3 install paho-mqtt
 }
 
 function SSH () 
 {
 	sudo apt install -y openssh-client openssh-server openssh-sftp-server -y > /dev/null 2>&1
+	sudo apt install sshpass -y > /dev/null 2>&1
 	sudo touch ~/.hushlogin
 }
 
@@ -75,7 +76,7 @@ function Basicos ()
 	sudo apt install samba -y > /dev/null 2>&1
 	sudo apt install wget -y > /dev/null 2>&1
     sudo apt install cockpit -y > /dev/null 2>&1
-    systemctl restart cockpit
+    echo $cont | sudo -S systemctl restart cockpit
 
     sudo apt-get install build-essential gcc make perl dkms -y > /dev/null 2>&1
     sudo apt install software-properties-common apt-transport-https -y > /dev/null 2>&1

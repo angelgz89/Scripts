@@ -121,9 +121,10 @@ function ZSH ()
 
 function PIP ()
 {
-	sudo pip3 install gspread
+    sudo pip3 install gspread
 	sudo pip3 install selenium
 	sudo pip3 install oauth2client
+	sudo pip3 intall python-dateutil
 	sudo pip3 install paho-mqtt
 }
 
@@ -165,7 +166,7 @@ function Basicos ()
 	sudo apt install samba -y > /dev/null 2>&1
 	sudo apt install wget -y > /dev/null 2>&1
     sudo apt install cockpit -y > /dev/null 2>&1
-    echo 12AP3Nagz! | sudo -S systemctl restart cockpit
+    echo $cont | sudo -S systemctl restart cockpit
 
     sudo apt-get install build-essential gcc make perl dkms -y > /dev/null 2>&1
     sudo apt install software-properties-common apt-transport-https -y > /dev/null 2>&1
