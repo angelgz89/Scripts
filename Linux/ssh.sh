@@ -8,6 +8,7 @@ then
     if [ "$(echo $?)" == "1" ]
     then
         sudo apt install sshpass -y > /dev/null 2>&1
+        echo "SSHPASS INSTALADO"
     fi
 fi
 
@@ -48,7 +49,6 @@ fi
 sshpass -p $contrasenia scp -P$puerto $HOME/.ssh/id_rsa.pub $usuario@$servidor:
 
 sshpass -p $contrasenia ssh -t -p$puerto $usuario@$servidor bash -c "'
-echo prueba
 cat $home/id_rsa.pub >> /home/angel/.ssh/authorized_keys
 chmod 600 $home/.ssh/authorized_keys
 rm -R ~/id_rsa.pub
