@@ -55,7 +55,7 @@ function PIP ()
 	sudo pip3 install gspread
 	sudo pip3 install selenium
 	sudo pip3 install oauth2client
-	sudo pip3 intall python-dateutil
+	sudo pip3 install python-dateutil
 	sudo pip3 install paho-mqtt
 }
 
