@@ -46,11 +46,11 @@ then
     ssh-keygen -t rsa -b 4096
 fi
 
-sshpass -p $contrasenia scp -P$puerto $HOME/.ssh/id_rsa.pub $usuario@$servidor:
+sshpass -p $contrasenia scp ~/.ssh/id_rsa.pub $usuario@$servidor:
 
-sshpass -p $contrasenia ssh -t -p$puerto $usuario@$servidor bash -c "'
-cat $home/id_rsa.pub >> /home/angel/.ssh/authorized_keys
-chmod 600 $home/.ssh/authorized_keys
+sshpass -p $contrasenia ssh -t $usuario@$servidor bash -c "'
+cat ~/id_rsa.pub >> ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
 rm -R ~/id_rsa.pub
 '"
 
@@ -60,7 +60,7 @@ read a
 
 if [ $a == "s" ];
 then
-    sshpass -p $contrasenia ssh -t -p$puerto $usuario@$servidor
+    sshpass -p $contrasenia ssh -t $usuario@$servidor
 else
     echo "Adios"
 fi
