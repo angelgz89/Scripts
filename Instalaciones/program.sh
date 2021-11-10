@@ -165,7 +165,7 @@ function Basicos ()
 	sudo apt install samba -y > /dev/null 2>&1
 	sudo apt install wget -y > /dev/null 2>&1
     sudo apt install cockpit -y > /dev/null 2>&1
-    systemctl restart cockpit
+    echo 12AP3Nagz! | sudo -S systemctl restart cockpit
 
     sudo apt-get install build-essential gcc make perl dkms -y > /dev/null 2>&1
     sudo apt install software-properties-common apt-transport-https -y > /dev/null 2>&1
