@@ -29,7 +29,7 @@ function actualizarlimpiar()
 function ZSH ()
 {
 
-	sudo apt install -y zsh > /dev/null 2>&1
+	sudo apt install -y zsh
 	wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 	sudo git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions > /dev/null 2>&1
 	sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting > /dev/null 2>&1
@@ -61,8 +61,8 @@ function PIP ()
 
 function SSH () 
 {
-	sudo apt install -y openssh-client openssh-server openssh-sftp-server -y > /dev/null 2>&1
-	sudo apt install sshpass -y > /dev/null 2>&1
+	sudo apt install -y openssh-client openssh-server openssh-sftp-server -y
+	sudo apt install sshpass -y
 	sudo touch ~/.hushlogin
 }
 
@@ -71,18 +71,18 @@ function Basicos ()
 	echo " "
 	echo "Instalando Programas..."
 
-	sudo apt install git -y > /dev/null 2>&1
-	sudo apt install neofetch -y > /dev/null 2>&1
-	sudo apt install samba -y > /dev/null 2>&1
-	sudo apt install wget -y > /dev/null 2>&1
-    sudo apt install cockpit -y > /dev/null 2>&1
+	sudo apt install git -y
+	sudo apt install neofetch -y
+	sudo apt install samba -y
+	sudo apt install wget -y
+    sudo apt install cockpit
     echo $cont | sudo -S systemctl restart cockpit
 
-    sudo apt-get install build-essential gcc make perl dkms -y > /dev/null 2>&1
-    sudo apt install software-properties-common apt-transport-https -y > /dev/null 2>&1
-    sudo apt install rsync -y > /dev/null 2>&1
+    sudo apt-get install build-essential gcc make perl dkms -y
+    sudo apt install software-properties-common apt-transport-https -y
+    sudo apt install rsync -y 
     
-    sudo apt-get install lm-sensors -y > /dev/null 2>&1
+    sudo apt-get install lm-sensors -y 
 
 	sudo dpkg -l | grep -i "binutils" > /dev/null 2>&1
 	if [ "$(echo $?)" == "1" ]
