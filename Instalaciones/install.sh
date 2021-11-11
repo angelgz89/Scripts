@@ -474,6 +474,8 @@ function instalacion ()
     echo -e "${turquesa}7: VisualStudio ${endColour}"
     echo -e "${turquesa}8: Gparted ${endColour}"
     echo -e "${turquesa}9: Plank ${endColour}"
+    echo -e "${turquesa}10: Temas ${endColour}"
+    temas
     echo ""
     echo -e "${turquesa}x: Servidor Samba ${endColour}"
     echo ""
@@ -492,7 +494,8 @@ function instalacion ()
     [ $a != "6" ] && 
     [ $a != "7" ] && 
     [ $a != "8" ] && 
-    [ $a != "9" ]
+    [ $a != "9" ] && 
+    [ $a != "10" ]
 
     do
         echo -e "${rojo}Entrada incorrecta, por favor vuelva a ingresar una opcion ${endColour}"
@@ -528,6 +531,9 @@ function instalacion ()
         instalacion;;
     9)
         Plank
+        instalacion;;
+    10)
+        temas
         instalacion;;
     esac
 }
