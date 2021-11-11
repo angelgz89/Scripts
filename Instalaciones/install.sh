@@ -467,9 +467,11 @@ function instalacion ()
 	echo -e "${turquesa}1: Tilix ${endColour}"
 	echo -e "${turquesa}2: Sublime Text ${endColour}"
 	echo -e "${turquesa}3: Docker ${endColour}"
-    echo -e "${turquesa}4: ${endColour}"
-	echo -e "${turquesa}5: ${endColour}"
+    echo -e "${turquesa}4: Veracrypt ${endColour}"
+	echo -e "${turquesa}5: VNC ${endColour}"
 	echo -e "${turquesa}6: ${endColour}"
+    echo ""
+    echo -e "${turquesa}x: Servidor Samba ${endColour}"
     echo ""
 	echo -e "${turquesa}0: Salir ${endColour}"
     echo ""
@@ -500,6 +502,15 @@ function instalacion ()
         instalacion;;
     3)
         docker
+        instalacion;;
+    4)
+        Veracrypt
+        instalacion;;
+    5)
+        VNC
+        instalacion;;
+    6)
+        Onedriver
         instalacion;;
     esac
 }
