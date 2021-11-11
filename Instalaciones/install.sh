@@ -568,7 +568,7 @@ clear
 
 echo -e "${turquesa}Estas en una VM VirtualBox? (s/n) ${endColour}"
 read vm
-if [ $vm == "s"];
+if [ $vm == "s" ];
 then
     VM
 fi
@@ -576,7 +576,7 @@ fi
 echo -e "${turquesa}Quieres instalar mas programas? (s/n) ${endColour}"
 read s
 
-if [ $s == "s"];
+if [ $s == "s" ];
 then
     instalacion
 fi
