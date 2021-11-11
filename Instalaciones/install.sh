@@ -469,7 +469,10 @@ function instalacion ()
 	echo -e "${turquesa}3: Docker ${endColour}"
     echo -e "${turquesa}4: Veracrypt ${endColour}"
 	echo -e "${turquesa}5: VNC ${endColour}"
-	echo -e "${turquesa}6: ${endColour}"
+	echo -e "${turquesa}6: Onedriver ${endColour}"
+    echo -e "${turquesa}7: VisualStudio ${endColour}"
+    echo -e "${turquesa}8: Gparted ${endColour}"
+    echo -e "${turquesa}9: Plank ${endColour}"
     echo ""
     echo -e "${turquesa}x: Servidor Samba ${endColour}"
     echo ""
@@ -485,7 +488,11 @@ function instalacion ()
     [ $a != "3" ] && 
     [ $a != "4" ] && 
     [ $a != "5" ] && 
-    [ $a != "6" ]
+    [ $a != "6" ] && 
+    [ $a != "7" ] && 
+    [ $a != "8" ] && 
+    [ $a != "9" ]
+
     do
         echo -e "${rojo}Entrada incorrecta, por favor vuelva a ingresar una opcion ${endColour}"
 		read a
@@ -511,6 +518,15 @@ function instalacion ()
         instalacion;;
     6)
         Onedriver
+        instalacion;;
+    7)
+        VisualStudio
+        intalacion;;
+    8)
+        Gparted
+        instalacion;;
+    9)
+        Plank
         instalacion;;
     esac
 }
