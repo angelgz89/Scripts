@@ -475,6 +475,7 @@ function instalacion ()
     echo -e "${turquesa}9: Plank ${endColour}"
     echo -e "${turquesa}10: Temas ${endColour}"
     echo -e "${turquesa}11: Stacer ${endColour}"
+    echo -e "${turquesa}12: Webmin ${endColour}"
     echo ""
     echo -e "${turquesa}x: Servidor Samba ${endColour}"
     echo -e "${turquesa}x: Servidor xxx ${endColour}"
@@ -497,7 +498,8 @@ function instalacion ()
     [ $a != "8" ] && 
     [ $a != "9" ] && 
     [ $a != "10" ] && 
-    [ $a != "11" ]
+    [ $a != "11" ] && 
+    [ $a != "12" ]
 
     do
         echo -e "${rojo}Entrada incorrecta, por favor vuelva a ingresar una opcion ${endColour}"
@@ -539,6 +541,9 @@ function instalacion ()
         instalacion;;
     11)
         Stacer
+        instalacion;;
+    12)
+        Webmin
         instalacion;;
     esac
 }
