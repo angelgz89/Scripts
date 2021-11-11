@@ -446,7 +446,7 @@ function terminal ()
         wget https://github.com/aristocratos/btop/releases/download/v1.0.24/btop-1.0.24-armv7l-linux-musleabihf.tbz
         tar -xjf btop-1.0.24-armv7l-linux-musleabihf.tbz
     fi
-    ./install.sh
+    ./install.sh > /dev/null 2>&1
     cd ..
     rm -R btop
     echo -e "${amarillo}[*]${endColour}${verde} Btop Instalado${endColour}"
