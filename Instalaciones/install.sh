@@ -591,7 +591,7 @@ then
     instalacion
 fi
 
-if [ $s == "n"];
+if [ $s == "n" ];
 then
     Salir
 fi
