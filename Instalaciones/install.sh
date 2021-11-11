@@ -474,8 +474,11 @@ function instalacion ()
     echo -e "${turquesa}8: Gparted ${endColour}"
     echo -e "${turquesa}9: Plank ${endColour}"
     echo -e "${turquesa}10: Temas ${endColour}"
+    echo -e "${turquesa}11: Stacer ${endColour}"
     echo ""
     echo -e "${turquesa}x: Servidor Samba ${endColour}"
+    echo -e "${turquesa}x: Servidor xxx ${endColour}"
+    echo -e "${turquesa}x: Servidor NOIP ${endColour}"
     echo ""
 	echo -e "${turquesa}0: Salir ${endColour}"
     echo ""
@@ -493,7 +496,8 @@ function instalacion ()
     [ $a != "7" ] && 
     [ $a != "8" ] && 
     [ $a != "9" ] && 
-    [ $a != "10" ]
+    [ $a != "10" ] && 
+    [ $a != "11" ]
 
     do
         echo -e "${rojo}Entrada incorrecta, por favor vuelva a ingresar una opcion ${endColour}"
@@ -532,6 +536,9 @@ function instalacion ()
         instalacion;;
     10)
         temas
+        instalacion;;
+    11)
+        Stacer
         instalacion;;
     esac
 }
