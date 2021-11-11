@@ -437,14 +437,14 @@ function terminal ()
     cd ~/btop
     if [ $(uname -m) == "x86_64" ];
     then
-        wget https://github.com/aristocratos/btop/releases/download/v1.0.24/btop-1.0.24-x86_64-linux-musl.tbz
-        tar -xjf btop-1.0.24-x86_64-linux-musl.tbz
+        wget https://github.com/aristocratos/btop/releases/download/v1.0.24/btop-1.0.24-x86_64-linux-musl.tbz > /dev/null 2>&1
+        tar -xjf btop-1.0.24-x86_64-linux-musl.tbz > /dev/null 2>&1
     fi
 
     if [ $(uname -m) == "armv7l" ];
     then
-        wget https://github.com/aristocratos/btop/releases/download/v1.0.24/btop-1.0.24-armv7l-linux-musleabihf.tbz
-        tar -xjf btop-1.0.24-armv7l-linux-musleabihf.tbz
+        wget https://github.com/aristocratos/btop/releases/download/v1.0.24/btop-1.0.24-armv7l-linux-musleabihf.tbz > /dev/null 2>&1
+        tar -xjf btop-1.0.24-armv7l-linux-musleabihf.tbz > /dev/null 2>&1
     fi
     ./install.sh > /dev/null 2>&1
     cd ..
@@ -462,9 +462,8 @@ function instalacion ()
 {
     clear
     echo "---------------------------"
-	echo -e "${amarillo} INSTALACION ${endColour}"
+	echo -e "${amarillo} PROGRAMAS PARA INSTALAR ${endColour}"
 	echo "---------------------------"
-    echo ""
 	echo -e "${turquesa}1: Tilix ${endColour}"
 	echo -e "${turquesa}2: Sublime Text ${endColour}"
 	echo -e "${turquesa}3: Docker ${endColour}"
@@ -475,7 +474,6 @@ function instalacion ()
     echo -e "${turquesa}8: Gparted ${endColour}"
     echo -e "${turquesa}9: Plank ${endColour}"
     echo -e "${turquesa}10: Temas ${endColour}"
-    temas
     echo ""
     echo -e "${turquesa}x: Servidor Samba ${endColour}"
     echo ""
