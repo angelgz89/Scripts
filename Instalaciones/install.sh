@@ -478,7 +478,9 @@ function instalacion ()
     echo -e "${turquesa}11: Stacer ${endColour}"
     echo -e "${turquesa}12: Webmin ${endColour}"
     echo -e "${turquesa}13: Synaptic ${endColour}"
+    echo "---------------------------"
     echo -e "${amarillo} SERVIDORES ${endColour}"
+    echo "---------------------------"
     echo -e "${turquesa}a: Servidor Samba ${endColour}"
     echo -e "${turquesa}b: Servidor NOIP ${endColour}"
     echo -e "${turquesa}c: Servidor RAID ${endColour}"
@@ -602,6 +604,7 @@ then
     VM
 fi
 
+clear
 echo -e "${turquesa}Quieres instalar mas programas? (s/n) ${endColour}"
 read s
 
@@ -612,5 +615,6 @@ fi
 
 if [ $s == "n" ];
 then
+    echo -e "${rojo}Deberias reiniciar ${endColour}"
     Salir
 fi
