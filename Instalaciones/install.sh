@@ -108,7 +108,6 @@ function Sistemas ()
 
     if [[ $OS == "Xubuntu" ]]
     then
-        VM
         sudo apt remove --purge -y onboard mousepad gnome-font-viewer gucharmap info libreoffice* xfburn atril xfce4-dict xfce4-taskmanager pidgin xfce4-screenshooter thunderbird catfish gnome-sudoku gnome-mines sgt* ristretto gimp simple-scan > /dev/null 2>&1
         actualizarlimpiar
 
@@ -117,7 +116,6 @@ function Sistemas ()
 
         sudo apt install nomacs -y > /dev/null 2>&1
         sudo apt install gnome-system-monitor -y > /dev/null 2>&1
-        sudo apt install transmission -y > /dev/null 2>&1
         sudo apt install gnome-disk-utility -y > /dev/null 2>&1
         
         Gparted
@@ -129,31 +127,29 @@ function Sistemas ()
         Sublime
         Webmin
         RAID
+        transmission
 
-        echo -e "${turquesa}Cambiar gestos de archivos a nautilus: (s / n)${endColour}"
-        read confirmacion
+        actualizarlimpiar
 
-        if [ $confirmacion == "s" ];
-        then
-            sudo apt install nautilus -y > /dev/null 2>&1
-            sudo apt remove --purge thunar -y > /dev/null 2>&1
+        # echo -e "${turquesa}Cambiar gestos de archivos a nautilus: (s / n)${endColour}"
+        # read confirmacion
 
-            #Deshabilitar documentos recientes nautilus
-            sudo rm ~/.local/share/recently-used.xbel
-            sudo touch ~/.local/share/recently-used.xbel
-            sudo chattr +i ~/.local/share/recently-used.xbel
-        fi
+        # if [ $confirmacion == "s" ];
+        # then
+        #     sudo apt install nautilus -y > /dev/null 2>&1
+        #     sudo apt remove --purge thunar -y > /dev/null 2>&1
+
+        #     #Deshabilitar documentos recientes nautilus
+        #     sudo rm ~/.local/share/recently-used.xbel
+        #     sudo touch ~/.local/share/recently-used.xbel
+        #     sudo chattr +i ~/.local/share/recently-used.xbel
+        # fi
     fi
 
     if [[ $OS == "Debian11" ]]
     then
-        sudo apt remove --purge -y libreoffice-common tali gnome-taquin gnome-maps gnome-weather gnome-sudoku gnome-robots gnome-tetravex gnome-nibbles quadrapassel swell-foop aisleriot gnome-mahjongg 
-        VM
-        SSH
-        Tilix
-        Temas
-        Gnome-tweaks
-        
+        sudo apt remove --purge -y libreoffice-common tali gnome-taquin gnome-maps gnome-weather gnome-sudoku gnome-robots gnome-tetravex gnome-nibbles quadrapassel swell-foop aisleriot gnome-mahjongg
+
         actualizarlimpiar
     
     fi
@@ -167,49 +163,28 @@ function Sistemas ()
         sudo apt dist-upgrade -y 
         sudo rpi-update -y
 
-        SSH
-        Tilix
-        Temas
-        Plank
         actualizarlimpiar
     fi
 
     if [[ $OS == "Mint xfce" ]]
     then
-        VM
         sudo apt remove --purge -y libreoffice-core libreoffice-common libreoffice-base-core onboard mintreport drawing sticky hypnotix simple-scan hexchat xfce4-dict xed gnome-font-viewer xreader thunderbird gnome-logs redshift-gtk gucharmap -y > /dev/null 2>&1
         actualizarlimpiar
         
-        Gparted
-        Plank
-        SSH
-        Tilix
-        Temas
-        Stacer
-        Sublime
     fi
 
     if [[ $OS == "UbuntuServer" ]]
     then
-        echo "Instalacion de programas en ubuntu server: "
-        SSH
-        Webmin
-        RAID
+
     fi
 
     if [[ $OS == "Ubuntu" ]]
     then
-        Gparted
-        SSH
-        Tilix
-        Temas
-        Stacer
-        Sublime
+
     fi
 
     if [[ $OS == "ElementaryOS5" ]]
     then
-        VM
         sudo apt install software-properties-common -y > /dev/null 2>&1
         sudo add-apt-repository ppa:philip.scott/elementary-tweaks -y
         sudo apt-get install elementary-tweaks -y > /dev/null 2>&1
@@ -222,17 +197,10 @@ function Sistemas ()
         sudo apt-get install build-essential module-assistant -y > /dev/null 2>&1
         sudo m-a prepare -y > /dev/null 2>&1
         sudo apt install libgconf2-dev libpolkit-gobject-1-dev libswitchboard-2.0-dev elementary-sdk -y > /dev/null 2>&1
-        SSH
-        Tilix
-        Sublime
-        Synaptic
-        Temas
-        Stacer
     fi
 
     if [[ $OS == "ElementaryOS6" ]]
     then
-        VM
         sudo apt install software-properties-common -y > /dev/null 2>&1
         sudo add-apt-repository ppa:philip.scott/pantheon-tweaks -y > /dev/null 2>&1
         actualizarlimpiar
@@ -246,12 +214,6 @@ function Sistemas ()
         sudo apt-get install build-essential module-assistant -y > /dev/null 2>&1
         sudo m-a prepare -y > /dev/null 2>&1
         sudo apt install libgconf2-dev libpolkit-gobject-1-dev libswitchboard-2.0-dev elementary-sdk -y > /dev/null 2>&1
-        SSH
-        Tilix
-        Sublime
-        Synaptic
-        Temas
-        Stacer
     fi
 
 
@@ -396,6 +358,17 @@ function Webmin ()
 		echo -e "${amarillo}[*]${endColour}${verde} Webmin Instalado${endColour}"
 	fi
 }
+
+function transmission () 
+{
+	sudo dpkg -l | grep -i "transmission" > /dev/null 2>&1
+	if [ "$(echo $?)" == "1" ];
+	then
+        sudo apt install transmission -y > /dev/null 2>&1
+		echo -e "${amarillo}[*]${endColour}${verde} Transmission Instalado${endColour}"
+	fi
+}
+
 
 function Onedriver ()
 {
