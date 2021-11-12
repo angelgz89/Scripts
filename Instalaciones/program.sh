@@ -47,14 +47,12 @@ function sistema ()
 		fi
 	fi
 
-	if [[ $sis = "XDG_CURRENT_DESKTOP=LXDE" ]];
-	then
-		lsb_release -d | grep "Raspbian"
-		if [ "$(echo $?)" == "0" ];
-		then
-			OS="Rasbperry"
-		fi
-	fi
+
+    lsb_release -d | grep "Raspbian" > /dev/null 2>&1
+    if [ "$(echo $?)" == "0" ];
+    then
+        OS="Rasbperry"
+    fi
 
     if [[ $sis = "XDG_CURRENT_DESKTOP=GNOME" ]];
 	then
@@ -80,7 +78,7 @@ function sistema ()
         lsb_release -d | grep "elementary OS 6"
 		if [ "$(echo $?)" == "0" ];
 		then
-		    OS="ElementaryOS5"
+		    OS="ElementaryOS6"
         fi
 	fi
 

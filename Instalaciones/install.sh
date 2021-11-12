@@ -37,6 +37,333 @@ function actualizarlimpiar()
 }
 
 #########################
+#RECONOCIMIENTO DEL SISTEMA
+#########################
+
+function sistema ()
+{
+	sis=$(env|grep XDG_CURRENT_DESKTOP)
+
+	if [[ $sis = "XDG_CURRENT_DESKTOP=XFCE" ]];
+	then
+		lsb_release -d | grep "Ubuntu" > /dev/null 2>&1
+		if [ "$(echo $?)" == "0" ];
+		then
+			OS="Xubuntu"
+		fi
+
+		lsb_release -d | grep "Linux Mint" > /dev/null 2>&1
+		if [ "$(echo $?)" == "0" ];
+		then
+			OS="Mint xfce"
+		fi
+	fi
+
+
+    lsb_release -d | grep "Raspbian" > /dev/null 2>&1
+    if [ "$(echo $?)" == "0" ];
+    then
+        OS="Rasbperry"
+    fi
+
+    if [[ $sis = "XDG_CURRENT_DESKTOP=GNOME" ]];
+	then
+        lsb_release -d | grep "Debian GNU/Linux 11"
+		if [ "$(echo $?)" == "0" ];
+		then
+			OS="Debian11"
+		fi
+	fi
+
+	if [[ $sis = "" ]];
+	then
+		OS="UbuntuServer"
+	fi
+
+	if [[ $sis = "XDG_CURRENT_DESKTOP=Pantheon" ]];
+	then
+        lsb_release -d | grep "elementary OS 5"
+		if [ "$(echo $?)" == "0" ];
+		then
+		    OS="ElementaryOS5"
+        fi
+        lsb_release -d | grep "elementary OS 6"
+		if [ "$(echo $?)" == "0" ];
+		then
+		    OS="ElementaryOS6"
+        fi
+	fi
+
+	if [[ $sis = "XDG_CURRENT_DESKTOP=ubuntu:GNOME" ]];
+	then
+		OS="Ubuntu"
+	fi
+}
+
+#########################
+
+function Sistemas ()
+{
+    sistema
+
+    if [[ $OS == "Xubuntu" ]]
+    then
+        VM
+        sudo apt remove --purge -y onboard mousepad gnome-font-viewer gucharmap info libreoffice* xfburn atril xfce4-dict xfce4-taskmanager pidgin xfce4-screenshooter thunderbird catfish gnome-sudoku gnome-mines sgt* ristretto gimp simple-scan > /dev/null 2>&1
+        actualizarlimpiar
+
+        sudo add-apt-repository ppa:xubuntu-dev/staging -y > /dev/null 2>&1
+        actualizarlimpiar
+
+        sudo apt install nomacs -y > /dev/null 2>&1
+        sudo apt install gnome-system-monitor -y > /dev/null 2>&1
+        sudo apt install transmission -y > /dev/null 2>&1
+        sudo apt install gnome-disk-utility -y > /dev/null 2>&1
+        
+        Gparted
+        Plank
+        SSH
+        Tilix
+        Temas
+        Stacer
+        Sublime
+        Webmin
+        RAID
+
+        echo -e "${turquesa}Cambiar gestos de archivos a nautilus: (s / n)${endColour}"
+        read confirmacion
+
+        if [ $confirmacion == "s" ];
+        then
+            sudo apt install nautilus -y > /dev/null 2>&1
+            sudo apt remove --purge thunar -y > /dev/null 2>&1
+
+            #Deshabilitar documentos recientes nautilus
+            sudo rm ~/.local/share/recently-used.xbel
+            sudo touch ~/.local/share/recently-used.xbel
+            sudo chattr +i ~/.local/share/recently-used.xbel
+        fi
+    fi
+
+    if [[ $OS == "Debian11" ]]
+    then
+        sudo apt remove --purge -y libreoffice-common tali gnome-taquin gnome-maps gnome-weather gnome-sudoku gnome-robots gnome-tetravex gnome-nibbles quadrapassel swell-foop aisleriot gnome-mahjongg 
+        VM
+        SSH
+        Tilix
+        Temas
+        Gnome-tweaks
+        
+        actualizarlimpiar
+    
+    fi
+
+    if [[ $OS == "Rasbperry" ]]
+    then
+        sudo apt remove --purge thonny -y 
+        sudo apt remove --purge geany -y
+        sudo apt install thunar -y
+        actualizarlimpiar
+        sudo apt dist-upgrade -y 
+        sudo rpi-update -y
+
+        SSH
+        Tilix
+        Temas
+        Plank
+        actualizarlimpiar
+    fi
+
+    if [[ $OS == "Mint xfce" ]]
+    then
+        VM
+        sudo apt remove --purge -y libreoffice-core libreoffice-common libreoffice-base-core onboard mintreport drawing sticky hypnotix simple-scan hexchat xfce4-dict xed gnome-font-viewer xreader thunderbird gnome-logs redshift-gtk gucharmap -y > /dev/null 2>&1
+        actualizarlimpiar
+        
+        Gparted
+        Plank
+        SSH
+        Tilix
+        Temas
+        Stacer
+        Sublime
+    fi
+
+    if [[ $OS == "UbuntuServer" ]]
+    then
+        echo "Instalacion de programas en ubuntu server: "
+        SSH
+        Webmin
+        RAID
+    fi
+
+    if [[ $OS == "Ubuntu" ]]
+    then
+        Gparted
+        SSH
+        Tilix
+        Temas
+        Stacer
+        Sublime
+    fi
+
+    if [[ $OS == "ElementaryOS5" ]]
+    then
+        VM
+        sudo apt install software-properties-common -y > /dev/null 2>&1
+        sudo add-apt-repository ppa:philip.scott/elementary-tweaks -y
+        sudo apt-get install elementary-tweaks -y > /dev/null 2>&1
+        actualizarlimpiar
+        sudo apt remove --purge epiphany-browser -y > /dev/null 2>&1
+        sudo apt install firefox -y > /dev/null 2>&1
+
+        actualizarlimpiar
+
+        sudo apt-get install build-essential module-assistant -y > /dev/null 2>&1
+        sudo m-a prepare -y > /dev/null 2>&1
+        sudo apt install libgconf2-dev libpolkit-gobject-1-dev libswitchboard-2.0-dev elementary-sdk -y > /dev/null 2>&1
+        SSH
+        Tilix
+        Sublime
+        Synaptic
+        Temas
+        Stacer
+    fi
+
+    if [[ $OS == "ElementaryOS6" ]]
+    then
+        VM
+        sudo apt install software-properties-common -y > /dev/null 2>&1
+        sudo add-apt-repository ppa:philip.scott/pantheon-tweaks -y > /dev/null 2>&1
+        actualizarlimpiar
+        sudo apt-get install pantheon-tweaks -y > /dev/null 2>&1
+
+        sudo apt remove --purge epiphany-browser -y > /dev/null 2>&1
+        sudo apt install firefox -y > /dev/null 2>&1
+
+        actualizarlimpiar
+
+        sudo apt-get install build-essential module-assistant -y > /dev/null 2>&1
+        sudo m-a prepare -y > /dev/null 2>&1
+        sudo apt install libgconf2-dev libpolkit-gobject-1-dev libswitchboard-2.0-dev elementary-sdk -y > /dev/null 2>&1
+        SSH
+        Tilix
+        Sublime
+        Synaptic
+        Temas
+        Stacer
+    fi
+
+
+    #################################################################
+
+    echo -e "${turquesa}Instalar Portainer.io en docker?: (s / n)${endColour}"
+    read confirmacion
+
+    if [ $confirmacion == "s" ];
+    then
+        sudo dpkg -l | grep -i "docker" > /dev/null 2>&1
+        if [ "$(echo $?)" == "0" ];
+        then
+            sudo docker volume create portainer_data 
+            sudo docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
+            echo -e "${amarillo}[*]${endColour}${verde} Portainer.io Instalado ${endColour}"
+        else
+            echo -e "${rojo}Docker no está Instalado ${endColour}"
+        fi
+    fi
+
+    #################################################################
+
+    echo -e "${turquesa}Instalar Home Assistant en docker?: (s / n)${endColour}"
+    read confirmacion
+
+    if [ $confirmacion == "s" ];
+    then
+        sudo dpkg -l | grep -i "docker" > /dev/null 2>&1
+        if [ "$(echo $?)" == "0" ];
+        then
+            sudo docker run -d --name homeassistant --privileged --restart=unless-stopped -e TZ=SPAIN -v $HOME/homeassistant/config:/config --network=host ghcr.io/home-assistant/home-assistant:stable
+            echo -e "${amarillo}[*]${endColour}${verde} Home Assistant Instalado ${endColour}"
+        else
+            echo -e "${rojo}Docker no está Instalado ${endColour}"
+        fi
+    fi
+
+    #################################################################
+
+
+
+    actualizarlimpiar
+
+    #git config --global user.name angelgz89
+    #git config --global user.email agz2712@gmail.com
+
+    # sudo apt install ufw -y > /dev/null 2>&1
+    # sudo ufw enable
+    # sudo ufw allow 22
+    # sudo ufw allow 80
+    # sudo ufw allow 445
+    # sudo ufw allow http
+    # sudo ufw disable
+
+    # sudo ufw deny 80
+    # sudo ufw status numbered
+    # sudo nano /etc/default/ufw
+
+    # sudo apt-get install localepurge
+
+    # mosquitto_sub -h 192.168.1.111 -t "topic"
+    # mosquitto_pub -h 192.168.1.111 -t "topic" -m "Mi primer mensaje usando MQTT"
+
+
+    #cd /etc/apt/sources.list.d 
+
+    echo -e "${amarillo}Proceso terminado ${endColour}"
+
+    Pulseunateclaparacontinuar
+
+}
+
+#########################
+#Mantenimiento
+#########################
+
+function configuraWOL ()
+{
+    echo interfaz?
+    read interfaz
+
+    echo "Por favor, introduce la contraseña de administrador para usar el programa:"
+    read -s cont
+
+    echo $cont | sudo -S apt update -y
+    sudo apt install ethtool -y
+    sudo ethtool -s $interfaz wol g
+    sudo apt install wakeonlan -y
+
+    touch wol.service
+
+    echo '[Unit]
+    Description=Configure Wake On LAN
+
+    [Service]
+    Type=oneshot
+    ExecStart=/sbin/ethtool -s '$interfaz' wol g
+
+    [Install]
+    WantedBy=basic.target' >> wol.service
+
+    sudo cp wol.service /etc/systemd/system/
+
+    rm -R wol.service
+
+    sudo systemctl daemon-reload
+    sudo systemctl enable wol.service
+    sudo systemctl start wol.service
+}
+
+#########################
 #PROGRAMAS
 #########################
 
@@ -307,6 +634,7 @@ function RAID ()
 		echo -e "${amarillo}[*]${endColour}${verde} Servidor RAID Instalado${endColour}"
 	fi
 }
+
 #########################
 
 function terminal () 
