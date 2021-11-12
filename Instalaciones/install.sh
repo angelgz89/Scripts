@@ -70,16 +70,6 @@ function Webmin ()
 	fi
 }
 
-function RAID ()
-{
-	sudo dpkg -l | grep -i "mdadm" > /dev/null 2>&1
-	if [ "$(echo $?)" == "1" ]
-	then
-		sudo apt install mdadm -y > /dev/null 2>&1
-		echo -e "${amarillo}[*]${endColour}${verde} Servidor RAID Instalado${endColour}"
-	fi
-}
-
 function Onedriver ()
 {
 	sudo add-apt-repository ppa:jstaf/onedriver -y > /dev/null 2>&1
@@ -95,16 +85,6 @@ function synaptic ()
 	then
         sudo apt install synaptic -y > /dev/null 2>&1
         echo -e "${amarillo}[*]${endColour}${verde} Synaptic Instalado${endColour}"
-    fi
-}
-
-function samba () 
-{
-    sudo dpkg -l | grep -i "samba" > /dev/null 2>&1
-	if [ "$(echo $?)" == "1" ]
-	then
-        sudo apt install samba -y > /dev/null 2>&1
-        echo -e "${amarillo}[*]${endColour}${verde} Samba Instalado${endColour}"
     fi
 }
 
@@ -290,6 +270,8 @@ function docker ()
     fi
 }
 
+#########################
+
 function NOIP ()
 {
     cd /usr/local/src
@@ -306,6 +288,25 @@ function NOIP ()
     # systemctl status noip2.service (for status)
 }
 
+function samba () 
+{
+    sudo dpkg -l | grep -i "samba" > /dev/null 2>&1
+	if [ "$(echo $?)" == "1" ]
+	then
+        sudo apt install samba -y > /dev/null 2>&1
+        echo -e "${amarillo}[*]${endColour}${verde} Samba Instalado${endColour}"
+    fi
+}
+
+function RAID ()
+{
+	sudo dpkg -l | grep -i "mdadm" > /dev/null 2>&1
+	if [ "$(echo $?)" == "1" ]
+	then
+		sudo apt install mdadm -y > /dev/null 2>&1
+		echo -e "${amarillo}[*]${endColour}${verde} Servidor RAID Instalado${endColour}"
+	fi
+}
 #########################
 
 function terminal () 
@@ -476,10 +477,12 @@ function instalacion ()
     echo -e "${turquesa}10: Temas ${endColour}"
     echo -e "${turquesa}11: Stacer ${endColour}"
     echo -e "${turquesa}12: Webmin ${endColour}"
-    echo ""
-    echo -e "${turquesa}x: Servidor Samba ${endColour}"
+    echo -e "${turquesa}13: Synaptic ${endColour}"
+    echo -e "${amarillo} SERVIDORES ${endColour}"
+    echo -e "${turquesa}a: Servidor Samba ${endColour}"
+    echo -e "${turquesa}b: Servidor NOIP ${endColour}"
+    echo -e "${turquesa}c: Servidor RAID ${endColour}"
     echo -e "${turquesa}x: Servidor xxx ${endColour}"
-    echo -e "${turquesa}x: Servidor NOIP ${endColour}"
     echo ""
 	echo -e "${turquesa}0: Salir ${endColour}"
     echo ""
@@ -499,7 +502,11 @@ function instalacion ()
     [ $a != "9" ] && 
     [ $a != "10" ] && 
     [ $a != "11" ] && 
-    [ $a != "12" ]
+    [ $a != "12" ] &&
+    [ $a != "13" ] &&
+    [ $a != "a" ] &&
+    [ $a != "b" ] &&
+    [ $a != "c" ]
 
     do
         echo -e "${rojo}Entrada incorrecta, por favor vuelva a ingresar una opcion ${endColour}"
@@ -544,6 +551,18 @@ function instalacion ()
         instalacion;;
     12)
         Webmin
+        instalacion;;
+    13)
+        synaptic
+        instalacion;;
+    a)
+        samba
+        instalacion;;
+    b)
+        NOIP
+        instalacion;;
+    c)
+        RAID
         instalacion;;
     esac
 }
