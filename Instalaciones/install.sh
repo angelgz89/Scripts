@@ -130,20 +130,6 @@ function Sistemas ()
         transmission
 
         actualizarlimpiar
-
-        # echo -e "${turquesa}Cambiar gestos de archivos a nautilus: (s / n)${endColour}"
-        # read confirmacion
-
-        # if [ $confirmacion == "s" ];
-        # then
-        #     sudo apt install nautilus -y > /dev/null 2>&1
-        #     sudo apt remove --purge thunar -y > /dev/null 2>&1
-
-        #     #Deshabilitar documentos recientes nautilus
-        #     sudo rm ~/.local/share/recently-used.xbel
-        #     sudo touch ~/.local/share/recently-used.xbel
-        #     sudo chattr +i ~/.local/share/recently-used.xbel
-        # fi
     fi
 
     if [[ $OS == "Debian11" ]]
