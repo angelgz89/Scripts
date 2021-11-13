@@ -166,7 +166,7 @@ function Sistemas ()
 
     if [[ $OS == "Ubuntu" ]]
     then
-
+        echo ""
     fi
 
     if [[ $OS == "ElementaryOS5" ]]
