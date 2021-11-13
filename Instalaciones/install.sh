@@ -161,7 +161,7 @@ function Sistemas ()
 
     if [[ $OS == "UbuntuServer" ]]
     then
-
+        echo ""
     fi
 
     if [[ $OS == "Ubuntu" ]]
