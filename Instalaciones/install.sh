@@ -108,7 +108,7 @@ function Sistemas ()
 
     if [[ $OS == "Xubuntu" ]]
     then
-        sudo apt remove --purge -y onboard mousepad gnome-font-viewer gucharmap info libreoffice* xfburn atril xfce4-dict xfce4-taskmanager pidgin xfce4-screenshooter thunderbird catfish gnome-sudoku gnome-mines sgt* ristretto gimp simple-scan > /dev/null 2>&1
+        sudo apt remove --purge -y onboard mousepad gnome-font-viewer gucharmap info libreoffice-base-core xfburn atril xfce4-dict xfce4-taskmanager pidgin xfce4-screenshooter thunderbird catfish gnome-sudoku gnome-mines sgt-launcher ristretto gimp simple-scan > /dev/null 2>&1
         actualizarlimpiar
 
         sudo add-apt-repository ppa:xubuntu-dev/staging -y > /dev/null 2>&1
