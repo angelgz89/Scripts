@@ -376,33 +376,30 @@ function synaptic ()
 
 function temas () 
 {
-	sudo dpkg -l | grep -i "sassc" > /dev/null 2>&1
-	if [ "$(echo $?)" == "1" ];
-	then
-		sudo dpkg -l | grep -i "papirus-icon-theme" > /dev/null 2>&1
-		if [ "$(echo $?)" == "1" ];
-		then
-			sudo add-apt-repository ppa:papirus/papirus -y > /dev/null 2>&1
-			sudo apt update -y > /dev/null 2>&1
-			sudo apt install papirus-icon-theme -y > /dev/null 2>&1
-		fi
-		sudo apt install sassc libglib2.0-dev-bin -y > /dev/null 2>&1
-		actualizarlimpiar
+    sudo dpkg -l | grep -i "papirus-icon-theme" > /dev/null 2>&1
+    if [ "$(echo $?)" == "1" ];
+    then
+        sudo add-apt-repository ppa:papirus/papirus -y > /dev/null 2>&1
+        sudo apt update -y > /dev/null 2>&1
+        sudo apt install papirus-icon-theme -y > /dev/null 2>&1
+    fi
+    sudo apt install sassc libglib2.0-dev-bin -y > /dev/null 2>&1
+    actualizarlimpiar
 
-		mkdir .themes
-		mkdir .icons
-		cd .themes/
+    mkdir .themes
+    mkdir .icons
+    cd .themes/
 
-		git clone https://github.com/vinceliuice/WhiteSur-gtk-theme.git > /dev/null 2>&1
-		cd WhiteSur-gtk-theme/
-		
-		sudo apt update -y > /dev/null 2>&1
-		sudo chmod 777 install.sh
-		sudo ./install.sh > /dev/null 2>&1
-		sudo ./install.sh -c dark -c light > /dev/null 2>&1
-		sudo ./install.sh -i simple > /dev/null 2>&1
-		cd ~/
-	fi
+    git clone https://github.com/vinceliuice/WhiteSur-gtk-theme.git > /dev/null 2>&1
+    cd WhiteSur-gtk-theme/
+    
+    sudo apt update -y > /dev/null 2>&1
+    sudo chmod 777 install.sh
+    sudo ./install.sh > /dev/null 2>&1
+    sudo ./install.sh -c dark -c light > /dev/null 2>&1
+    sudo ./install.sh -i simple > /dev/null 2>&1
+    cd ~/
+
 	actualizarlimpiar
     echo -e "${amarillo}[*]${endColour}${verde} Temas Instalados ${endColour}"
 }
@@ -576,12 +573,8 @@ function NOIP ()
 
 function samba () 
 {
-    sudo dpkg -l | grep -i "samba" > /dev/null 2>&1
-	if [ "$(echo $?)" == "1" ]
-	then
-        sudo apt install samba -y > /dev/null 2>&1
-        echo -e "${amarillo}[*]${endColour}${verde} Samba Instalado${endColour}"
-    fi
+    sudo apt install samba -y > /dev/null 2>&1
+    echo -e "${amarillo}[*]${endColour}${verde} Samba Instalado${endColour}"
 }
 
 function RAID ()
@@ -611,32 +604,20 @@ function terminal ()
 	sudo touch ~/.hushlogin
     echo -e "${amarillo}[*]${endColour}${verde} SSH Instalado${endColour}"
 
-    sudo dpkg -l | grep -i "git" > /dev/null 2>&1
-	if [ "$(echo $?)" == "1" ]
-	then
-        sudo apt install git -y > /dev/null 2>&1
-        echo -e "${amarillo}[*]${endColour}${verde} GIT Instalado${endColour}"
-    fi
+    sudo apt install git -y > /dev/null 2>&1
+    echo -e "${amarillo}[*]${endColour}${verde} GIT Instalado${endColour}"
+
+    sudo apt install rsync -y > /dev/null 2>&1
+    echo -e "${amarillo}[*]${endColour}${verde} Rsync Instalado${endColour}"
+
+    sudo apt install wget -y > /dev/null 2>&1
+    echo -e "${amarillo}[*]${endColour}${verde} WGET Instalado${endColour}"
 
     sudo dpkg -l | grep -i "neofetch" > /dev/null 2>&1
 	if [ "$(echo $?)" == "1" ]
 	then
         sudo apt install neofetch -y > /dev/null 2>&1
         echo -e "${amarillo}[*]${endColour}${verde} Neofetch Instalado${endColour}"
-    fi
-
-    sudo dpkg -l | grep -i "wget" > /dev/null 2>&1
-	if [ "$(echo $?)" == "1" ]
-	then
-        sudo apt install wget -y > /dev/null 2>&1
-        echo -e "${amarillo}[*]${endColour}${verde} WGET Instalado${endColour}"
-    fi
-
-    sudo dpkg -l | grep -i "rsync" > /dev/null 2>&1
-	if [ "$(echo $?)" == "1" ]
-	then
-        sudo apt install rsync -y > /dev/null 2>&1
-        echo -e "${amarillo}[*]${endColour}${verde} Rsync Instalado${endColour}"
     fi
 
     sudo dpkg -l | grep -i "sensors" > /dev/null 2>&1
