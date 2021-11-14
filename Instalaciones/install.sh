@@ -493,7 +493,6 @@ function VisualStudio ()
         wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add - > /dev/null 2>&1
         sudo add-apt-repository -y "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /dev/null 2>&1
         sudo apt install -y code > /dev/null 2>&1
-        sudo apt update -y > /dev/null 2>&1
         echo -e "${amarillo}[*]${endColour}${verde} Visual Studio Code Instalado ${endColour}"
     fi
 }
