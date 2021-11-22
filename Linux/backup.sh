@@ -9,10 +9,12 @@ function muestra_uso
 }
 
 usuario="angel"
-contrasenia="12AP3Nagz!"
 MINIPC="1C:83:41:28:1C:6E"
 MACROSERVER="FC:34:97:66:DE:0E"
 MINIMACROSERVER="3C:7C:3F:C1:82:CA"
+
+echo contraseña?
+read contrasenia
 
 #Programa principal
 if [ $# -ne 1 ] 
@@ -46,5 +48,5 @@ done
 sshpass -p $contrasenia scp ~/prueba.txt $usuario@$IP:
 
 sshpass -p $contrasenia ssh -t $usuario@$IP bash -c "'
-echo "12AP3Nagz!" | sudo -S shutdown -h 0'"
+sudo shutdown -h 0'"
 
