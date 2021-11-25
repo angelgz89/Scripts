@@ -21,10 +21,15 @@ inicio = time.time()
 #sudo apt install chromium-driver
 #sudo apt-get install chromium-chromedriver
 
+
+CARPETAUSERPASS = os.environ["HOME"] + "/Servidor/userpass.txt"
+FILEKEY = os.environ["HOME"] + "/Servidor/inversion-clave.json"
+
 if os.name == "posix":
     os.system('clear')
 if os.name == "nt":
     os.system('cls')
+
 
 # FUNCIONES
 def buscarArchivo(archivo):
@@ -52,7 +57,7 @@ def buscarArchivo(archivo):
 def conexionGdrive():
     
     alcance  = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
-    creds  =  ServiceAccountCredentials.from_json_keyfile_name(("/home/angel/Servidores/inversion-clave.json"), alcance)
+    creds  =  ServiceAccountCredentials.from_json_keyfile_name((FILEKEY), alcance)
     client = gspread.authorize(creds)
 
     # obtener la instancia de la hoja de calculo
@@ -94,13 +99,15 @@ def accesoInversis():
     #contrasenia = driver.find_element_by_name("claveUsuario")
     contrasenia = driver.find_element(By.NAME, "claveUsuario")
 
-    fichero = open('/home/angel/Servidores/userpass.txt')
-    user =fichero.readline()
-    passs = fichero.readline()
+    fichero = open(CARPETAUSERPASS)
+    user = fichero.readline().rstrip('\n')
+    passs = fichero.readline().rstrip('\n')
+    fichero.close()
 
     usuario.send_keys(user)  # Introduce el usuario
     contrasenia.send_keys(passs)  # Introduce la contraseña
     sleep(1)
+
     # Accede a un elemento de la pagina web mediante la el nombre y clicka
     #driver.find_element_by_name("entrar").click()
     driver.find_element(By.NAME, "entrar").click()
