@@ -4,4 +4,3 @@ contraseña = fichero.readline()
 
 print (usuario)
 print (contraseña)
-
