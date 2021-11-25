@@ -94,8 +94,12 @@ def accesoInversis():
     #contrasenia = driver.find_element_by_name("claveUsuario")
     contrasenia = driver.find_element(By.NAME, "claveUsuario")
 
-    usuario.send_keys("agz2712")  # Introduce el usuario
-    contrasenia.send_keys("11AP2Nagz")  # Introduce la contraseña
+    fichero = open('/home/angel/Servidores/userpass.txt')
+    user =fichero.readline()
+    passs = fichero.readline()
+
+    usuario.send_keys(user)  # Introduce el usuario
+    contrasenia.send_keys(passs)  # Introduce la contraseña
     sleep(1)
     # Accede a un elemento de la pagina web mediante la el nombre y clicka
     #driver.find_element_by_name("entrar").click()
