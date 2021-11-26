@@ -13,4 +13,5 @@ do
     sudo ufw deny from $ip > /dev/null 2>&1
 done
 
+cp ipsbloqueadas.txt ~/IPbloqueadas.txt
 rm ipsbloqueadas.txt
