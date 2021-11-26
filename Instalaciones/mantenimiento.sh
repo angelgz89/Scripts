@@ -170,6 +170,24 @@ sudo sync && sudo sysctl -w vm.drop_caches=3  > /dev/null 2>&1
 
 ########################################################################################################
 
+echo -e "${purpleColour}Analizando rootkit...${endColour}"
+sudo dpkg -l | grep -i "chkrootkit" > /dev/null 2>&1
+if [ "$(echo $?)" == "1" ];
+then
+        sudo apt install chkrootkit -y
+fi
+sudo chkrootkit
+
+########################################################################################################
+
+echo -e "${purpleColour}Antivirus...${endColour}"
+sudo dpkg -l | grep -i "clamav" > /dev/null 2>&1
+if [ "$(echo $?)" == "1" ];
+then
+        sudo apt install clamav -y
+fi
+
+########################################################################################################
 echo ""
 echo -e "${greenColour}PROCESO DE MANTENIMIENTO COMPLETADO${endColour}"
 echo ""
