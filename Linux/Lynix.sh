@@ -1,10 +1,11 @@
 #! /bin/bash
 
+# DESCARGAS = "$PWD/Descargas"
 
-if [ -d "~/Descargas" ]
+if [ -d "$PWD/Descargas" ]
 then
     cd ~/Descargas
-    if [ -d "~/Descargas/lynis" ]
+    if [ -d "./lynis" ]
     then
         cd ~/Descargas/lynis
         sudo ./lynis audit system  
