@@ -13,5 +13,6 @@ do
     sudo ufw deny from $ip > /dev/null 2>&1
 done
 
-cat ipsbloqueadas.txt | uniq > IPbloqueadas.txt
+cat ipsbloqueadas.txt | uniq >> IPbloqueadas.txt
+cat IPbloqueadas.txt | uniq >> IPbloqueadas.txt
 rm ipsbloqueadas.txt
