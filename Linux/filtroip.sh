@@ -10,9 +10,9 @@ sudo cat /var/log/auth.log | grep -a "Did not" | awk '{print $12}' | uniq -c | s
 for ip in $(cat ipsbloqueadas.txt);
 do
     echo "$ip"
-    sudo ufw deny from $ip > /dev/null 2>&1
+    sudo ufw deny from $ip port 22 > /dev/null 2>&1
 done
 
 cat ipsbloqueadas.txt | uniq >> IPbloqueadas.txt
-cat IPbloqueadas.txt | uniq >> IPbloqueadas.txt
+#cat IPbloqueadas.txt | uniq >> IPbloqueadas.txt
 rm ipsbloqueadas.txt
