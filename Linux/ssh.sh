@@ -46,7 +46,7 @@ then
     ssh-keygen -t rsa -b 4096
 fi
 
-sshpass -p $contrasenia scp ~/.ssh/id_rsa.pub $usuario@$servidor:
+sshpass -p $contrasenia scp -P $puerto ~/.ssh/id_rsa.pub $usuario@$servidor:
 
 sshpass -p $contrasenia ssh -t -p$puerto $usuario@$servidor bash -c "'
 cat ~/id_rsa.pub >> ~/.ssh/authorized_keys
