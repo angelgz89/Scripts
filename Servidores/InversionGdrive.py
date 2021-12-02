@@ -230,22 +230,20 @@ def MostrarResultados():
     mwrn = Resumen.acell("G8").value
     print("Ganancias netas: {} - MWR neto: {}".format(totaln,mwrn))
 
-    meses = Resumen.acell("C2").value
-    print("Meses invertido: {}".format(meses))
-
-    print()
-
     mediab = Resumen.acell("D9").value
     print("Ganancias mensuales brutas: {}".format(mediab))
     median = Resumen.acell("E9").value
     print("Ganancias mensuales netas: {}".format(median))
+
+    meses = Resumen.acell("C2").value
+    print("Meses invertido: {}".format(meses))
 
     print()
 
     TWR = Cartera.acell("L4").value
     print("TWR de la inversion: {}".format(TWR))
     TWRM = Cartera.acell("M4").value
-    print("TWR medio de la inversion: {}".format(TWRM))
+    print("TWR de la inversion: {}".format(TWRM)) 
     VOLT = Cartera.acell("O4").value
     print("Volatilidad de la inversion: {}".format(VOLT))
     SHARPE = Cartera.acell("P4").value
@@ -259,4 +257,4 @@ MostrarResultados()
 
 fin = time.time()
 print()
-print("Ha tardado {} segundos".format(round(fin-inicio,2)))
+print("Tiempo de ejecucion: {} segundos".format(round(fin-inicio,2)))
