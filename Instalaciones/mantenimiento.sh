@@ -184,7 +184,7 @@ echo -e "${purpleColour}Antivirus...${endColour}"
 sudo dpkg -l | grep -i "clamav" > /dev/null 2>&1
 if [ "$(echo $?)" == "1" ];
 then
-        sudo apt install clamav -y
+#        sudo apt install clamav -y
 fi
 
 ########################################################################################################
