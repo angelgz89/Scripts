@@ -22,11 +22,9 @@ then
 
     plugins=(git
     zsh-autosuggestions
-    zsh-syntax-highlighting)
-
+    zsh-syntax-highlighting
+    )
     source $ZSH/oh-my-zsh.sh
-    source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
     export PATH="$PATH:$HOME/Scripts/Linux"' > .zshrc
 
     chsh -s $(which zsh)
