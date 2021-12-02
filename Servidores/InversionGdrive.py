@@ -164,8 +164,14 @@ def actualizarexcel():
     mes = int(fecha.month)
     anio = str(fecha.year)
     
-    if dia >= 2:
-        mes = mes +1
+    if mes == 12:
+        if dia >= 2:
+            mes = 1
+            anio = int(anio)+1
+            anio = str(anio)
+    else:
+        if dia >= 2:
+            mes = mes +1
 
     # Grabar total anterior
     #Resumen  =  Inversion.worksheet("Resumen")
