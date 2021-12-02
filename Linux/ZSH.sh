@@ -14,7 +14,7 @@ then
     sudo git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions > /dev/null 2>&1
     sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting > /dev/null 2>&1
     
-    echo ' ' > .zshrc
+    echo "" > .zshrc
     
     echo '
     export ZSH=$HOME/.oh-my-zsh
@@ -28,10 +28,5 @@ then
     source $ZSH/oh-my-zsh.sh
     source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-    export PATH="$PATH:$HOME/Scripts/Linux"
-
-    prompt_context() {
-    if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-        prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
-    fi' > .zshrc
+    export PATH="$PATH:$HOME/Scripts/Linux"' > .zshrc
 fi
