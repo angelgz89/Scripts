@@ -3,7 +3,6 @@
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
-
 import selenium
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -21,7 +20,6 @@ inicio = time.time()
 #sudo apt install chromium-driver
 #sudo apt-get install chromium-chromedriver
 
-
 CARPETAUSERPASS = os.environ["HOME"] + "/Servidor/userpass.txt"
 FILEKEY = os.environ["HOME"] + "/Servidor/inversion-clave.json"
 
@@ -29,7 +27,6 @@ if os.name == "posix":
     os.system('clear')
 if os.name == "nt":
     os.system('cls')
-
 
 # FUNCIONES
 def buscarArchivo(archivo):
@@ -68,6 +65,7 @@ def conexionGdrive():
 
 Inversion = conexionGdrive()
 Resumen  =  Inversion.worksheet("Resumen")
+Cartera = Inversion.worksheet("Cartera")
 
 def accesoInversis():
      
@@ -160,6 +158,7 @@ def actualizarexcel():
     lista = accesoInversis()
 
     fecha = date.today()
+
     dia = int(fecha.day)
     mes = int(fecha.month)
     anio = str(fecha.year)
@@ -169,9 +168,12 @@ def actualizarexcel():
             mes = 1
             anio = int(anio)+1
             anio = str(anio)
+        if dia == 1:
+            if dia >= 2:
+                mes = mes + 1
     else:
         if dia >= 2:
-            mes = mes +1
+            mes = mes + 1
 
     # Grabar total anterior
     #Resumen  =  Inversion.worksheet("Resumen")
@@ -202,7 +204,7 @@ def actualizarexcel():
 
 def media():
     
-    d1 = date(2020, 1, 1)
+    d1 = date(2021, 1, 1)
     d2 = date.today()
 
     meses = rrule.rrule(rrule.MONTHLY, dtstart=d1, until=d2).count()
@@ -221,20 +223,33 @@ def MostrarResultados():
     #Resumen  =  Inversion.worksheet("Resumen")
 
     totalb = Resumen.acell("D8").value
-    twrb = Resumen.acell("F8").value
-    print("Ganancias brutas: {} - TWR bruto: {}".format(totalb,twrb))
+    mwrb = Resumen.acell("F8").value
+    print("Ganancias brutas: {} - MWR bruto: {}".format(totalb,mwrb))
 
     totaln = Resumen.acell("E8").value
-    twrn = Resumen.acell("G8").value
-    print("Ganancias netas: {} - TWR neto: {}".format(totaln,twrn))
+    mwrn = Resumen.acell("G8").value
+    print("Ganancias netas: {} - MWR neto: {}".format(totaln,mwrn))
 
     meses = Resumen.acell("C2").value
     print("Meses invertido: {}".format(meses))
+
+    print()
 
     mediab = Resumen.acell("D9").value
     print("Ganancias mensuales brutas: {}".format(mediab))
     median = Resumen.acell("E9").value
     print("Ganancias mensuales netas: {}".format(median))
+
+    print()
+
+    TWR = Cartera.acell("L4").value
+    print("TWR de la inversion: {}".format(TWR))
+    TWRM = Cartera.acell("M4").value
+    print("TWR medio de la inversion: {}".format(TWRM))
+    VOLT = Cartera.acell("O4").value
+    print("Volatilidad de la inversion: {}".format(VOLT))
+    SHARPE = Cartera.acell("P4").value
+    print("Sharpe de la inversion: {}".format(SHARPE))
 
 ###########################################################
 
@@ -243,4 +258,5 @@ media()
 MostrarResultados()
 
 fin = time.time()
+print()
 print("Ha tardado {} segundos".format(round(fin-inicio,2)))
