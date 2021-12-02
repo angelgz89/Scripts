@@ -4,9 +4,8 @@ sudo dpkg -l | grep -i "zsh" > /dev/null 2>&1
 if [ "$(echo $?)" == "1" ];
 then
     sudo apt install git zsh -y > /dev/null 2>&1
-    chsh -s $(which zsh)
     sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-    sudo apt-get install zsh-antigen
+    sudo apt install zsh-antigen
     #sudo apt-get install zsh-syntax-highlighting
     #git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 
@@ -29,4 +28,6 @@ then
     source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
     export PATH="$PATH:$HOME/Scripts/Linux"' > .zshrc
+
+    chsh -s $(which zsh)
 fi
