@@ -1,5 +1,15 @@
 #! /bin/bash
 
+echo "Quieres despertar PC? (s/n))"
+read d
+
+if [ $d = "s" ];
+then
+        wakeonlan 3C:7C:3F:DA:4C:0D
+fi
+
+
+
 echo "Quieres despertar Macro server? (s/n))"
 read a
 
