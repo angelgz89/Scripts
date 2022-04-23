@@ -278,6 +278,15 @@ function Utilidaddiscos ()
         echo -e "${AMARILLO}[*]${endColour}${VERDE} Utilidad de discos ya está instalado ${endColour}"
 	fi
 }
+
+function Chrome () 
+{
+    wget -c https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    sudo apt-get update -y > /dev/null 2>&1 
+    sudo apt-get install libappindicator1 -y > /dev/null 2>&1
+    sudo dpkg -i google-chrome-stable_current_amd64.deb -y > /dev/null 2>&1
+    echo -e "${AMARILLO}[*]${endColour}${VERDE} Chrome Instalado ${endColour}"
+}
     
 
 function BastionadoIP6 ()
@@ -358,7 +367,7 @@ Utilidaddiscos
 Nomacs
 Veracrypt
 Gparted
-
+Chrome
 
 #Temas
 Papirus
