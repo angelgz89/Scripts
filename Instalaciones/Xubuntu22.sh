@@ -389,3 +389,4 @@ sudo rm -R ~/Vídeos
 
 
 actualizarlimpiar
+sudo reboot
