@@ -356,7 +356,6 @@ function wakeonlan ()
 login
 limpieza
 Basicos
-actualizarlimpiar
 
 #Programas
 ZSH
@@ -369,12 +368,14 @@ Veracrypt
 Gparted
 Chrome
 
+actualizarlimpiar
+
 #Temas
 Papirus
 
 
 #Bastionados
-BastionadoIP6
+#BastionadoIP6
 BastionadoFail2Ban
 
 #Configuracion
