@@ -24,6 +24,32 @@ function login ()
     fi
 }
 
+function limpieza () 
+{
+    sudo apt remove --purge -y onboard mousepad gnome-font-viewer gucharmap info libreoffice-common libreoffice-base-core xfburn atril xfce4-dict xfce4-taskmanager pidgin xfce4-screenshooter thunderbird catfish gnome-sudoku gnome-mines sgt-launcher ristretto gimp simple-scan > /dev/null 2>&1
+    sudo add-apt-repository ppa:xubuntu-dev/staging -y > /dev/null 2>&1
+}
+
+function actualizarlimpiar ()
+{
+	echo -e "${CYAN}Actualizando el sistema... ${endColour}"
+	sudo apt update -y > /dev/null 2>&1
+	sudo apt full-upgrade -y > /dev/null 2>&1
+	sudo apt update -y > /dev/null 2>&1
+    apt-get autoremove -y > /dev/null 2>&1
+    apt-get autoclean -y > /dev/null 2>&1
+	sudo apt --fix-broken install -y > /dev/null 2>&1
+    # find /var/log -type f -delete > /dev/null 2>&1
+    # rm -rf /usr/share/man/* > /dev/null 2>&1
+
+    # rm -rf ~/.local/share/Trash/*
+    # sudo rm -rf /tmp/*
+    # sudo rm -vfr /tmp/* >/dev/null 2>&1
+    # rm -vfr /var/tmp/* >/dev/null 2>&1
+	# sudo apt unattended-upgrades
+	# sudo dpkg-reconfigure --priority=low unattended-upgrades
+}
+
 function Basicos () 
 {
     sudo apt install openssh-client openssh-server openssh-sftp-server sshpass -y > /dev/null 2>&1
@@ -321,7 +347,9 @@ function wakeonlan ()
 
 
 login
+limpieza
 Basicos
+actualizarlimpiar
 
 #Programas
 ZSH
@@ -344,3 +372,5 @@ BastionadoFail2Ban
 
 #Configuracion
 wakeonlan
+
+actualizarlimpiar
