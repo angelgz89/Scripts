@@ -371,4 +371,12 @@ BastionadoFail2Ban
 #Configuracion
 wakeonlan
 
+sudo rm -R ~/Documentos
+sudo rm -R ~/Imágenes
+sudo rm -R ~/Música
+sudo rm -R ~/Plantillas
+sudo rm -R ~/Público
+sudo rm -R ~/Vídeos
+
+
 actualizarlimpiar
