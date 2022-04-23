@@ -1,5 +1,16 @@
 #!/bin/bash
 
+#Colores
+VERDE="\e[0;32m\033[1m"
+ROJO="\e[0;31m\033[1m"
+AZUL="\e[0;34m\033[1m"
+AMARILLO="\e[0;33m\033[1m"
+VIOLETA="\e[0;35m\033[1m"
+CYAN="\e[0;36m\033[1m"
+GRIS="\e[0;37m\033[1m"
+NEGRO="\e[0;30m\033[1m"
+endColour="\033[0m\e[0m"
+
 #############################################################################################
 
 function login ()
@@ -39,6 +50,7 @@ function actualizarlimpiar ()
     apt-get autoremove -y > /dev/null 2>&1
     apt-get autoclean -y > /dev/null 2>&1
 	sudo apt --fix-broken install -y > /dev/null 2>&1
+    sudo apt update -y > /dev/null 2>&1
     # find /var/log -type f -delete > /dev/null 2>&1
     # rm -rf /usr/share/man/* > /dev/null 2>&1
 
@@ -143,20 +155,6 @@ function Basicos ()
     else
         echo -e "${AMARILLO}[*]${endColour}${VERDE} Net-tools ya está instalado ${endColour}"
 	fi
-
-    # sudo dpkg -l | grep -i "" > /dev/null 2>&1
-	# if [ "$(echo $?)" == "1" ]
-	# then
-
-    # fi
-
-    #sudo apt-get install build-essential gcc make perl dkms -y > /dev/null 2>&1
-    #sudo apt install software-properties-common apt-transport-https -y > /dev/null 2>&1
-    #echo -e "${AMARILLO}[*]${endColour}${VERDE} Accesorios Instalados${endColour}"
-    
-    BTOP
-    actualizarlimpiar
-    ZSH
 }
 
 function ZSH()
