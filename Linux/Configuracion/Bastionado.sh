@@ -191,16 +191,16 @@ function UFW ()
     fi
 }
 
-BastionadoSSH
-BastionadoCTL
-UFW
+BastionadoSSH > /dev/null 2>&1
+BastionadoCTL > /dev/null 2>&1
+UFW > /dev/null 2>&1
 
-sudo truncate -s0 /etc/resolv.conf
-echo "nameserver 1.1.1.1" | sudo tee -a /etc/resolv.conf
-echo "nameserver 1.0.0.1" | sudo tee -a /etc/resolv.conf
+sudo truncate -s0 /etc/resolv.conf > /dev/null 2>&1
+echo "nameserver 1.1.1.1" | sudo tee -a /etc/resolv.conf > /dev/null 2>&1
+echo "nameserver 1.0.0.1" | sudo tee -a /etc/resolv.conf > /dev/null 2>&1
 
-sysctl -p
-update-grub2
+sudo sysctl -p > /dev/null 2>&1
+sudo update-grub2 > /dev/null 2>&1
 sudo systemctl restart systemd-timesyncd
-ufw --force enable
+sudo ufw --force enable
 sudo service ssh restart
