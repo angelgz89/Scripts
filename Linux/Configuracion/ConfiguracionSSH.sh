@@ -1,65 +1,106 @@
 #!/bin/bash
-# Script to harden ssh on ubuntu/debian server
-# follow on my blog http://www.coderew.com/hardening_ssh_on_remote_ubuntu_debian_server/ 
-# checkout the repo for more scripts https://github.com/nvnmo/handy-scripts
 
-read -p "Enter your server IP:" serverIP # prompt for server IP
-read -p "Enter your username(requires root privileges):" username # prompt for username
-printf "\nChanging the default SSH port is one of the easiest things you can do to help harden you servers security. \nIt will protect you from robots that are programmed \nto scan for port 22 openings, and commence \ntheir attack."
+#COPIA DE SEGURIDAD
+sudo cp -r -f /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
+sudo cp -r -f /etc/ssh/sshd_config ~/sshd_config.bak
+
+touch ~/sshd_config
+echo '
+Include /etc/ssh/sshd_config.d/*.conf
+
+AcceptEnv LANG LC_*
+
+# Puerto
+Port 22
+
+# Usuarios
+PermitRootLogin no
+
+# Contraseña o Clave publica
+PasswordAuthentication yes
+PermitEmptyPasswords no
+#AuthenticationMethods publickey
+#PubkeyAuthentication yes
+
+# Depending on your 2FA option, you may need to enable some of these options, but they should be disabled by default
+ChallengeResponseAuthentication no
+
+# Disable connection multiplexing which can be used to bypass authentication
+MaxSessions 2
+
+# Bloquear clientes 30 minutos despues de fallar 2 intentos de login
+MaxAuthTries 2
+LoginGraceTime 30
+
+# Enable PAM authentication
+UsePAM yes
+
+# Disable Kerberos based authentication
+KerberosAuthentication no
+KerberosGetAFSToken no
+KerberosOrLocalPasswd no
+KerberosTicketCleanup yes
+GSSAPIAuthentication no
+GSSAPICleanupCredentials yes
+
+# Disable user environment forwarding
+X11Forwarding no
+AllowTcpForwarding no
+AllowAgentForwarding no
+PermitUserRC no
+PermitUserEnvironment no
+
+# We want to log all activity
+LogLevel INFO
+SyslogFacility AUTHPRIV
+
+# What messages do you want to present your users when they log in?
+Banner none
+PrintMotd no
+PrintLastLog yes
+
+#Evitar zombies
+TCPKeepAlive no
+' > ~/sshd_config
+
+read -p "Quieres cambiar el puerto por defecto? [Y/n]" -n 1 portChange
 printf "\n"
-read -p "Do you want to change default SSH port?[Y/n]" -n 1 portChange
-printf "\n"
-portNum=0
-if [[ $portChange =~ ^[Yy]$ ]];
-then
-  printf "Choose an available port.The port number does not \nreally matter as long as you do no choose something that \nis already in use and falls within the \nport number range."
-  printf "\n"
-  read -p "Port Number:" portNum # a port num to change
-  printf "\n"
+if [[ $portChange =~ ^[Yy]$ ]];then
+  read -p "Introcude el puerto nuevo: " portNum
+  sed -i "s/.*Port.*/Port $portNum/g" ~/sshd_config
 fi
+
+read -p "Quieres habilitar el acceso root? [Y/n]" -n 1 rootLogin
 printf "\n"
-read -p "Do you want to disable root login?[Y/n]" -n 1 rootLogin;printf "\n"
-read -p "Do you want to change protocol version to 2?[Y/n]" -n 1 protocolChange;printf "\n"
-read -p "Do you want to enable privilege seperation?[Y/n]" -n 1 privilegeSep;printf "\n"
-read -p "Do you want to disable empty passwords?[Y/n]" -n 1 emptyPass;printf "\n"
-read -p "Do you want to disable X11 forwarding?[Y/n]" -n 1 x11Forwarding;printf "\n"
-read -p "Do you want to enable TCPKeepAlive to avoid zombies?[Y/n]" -n 1 zombies;printf "\n"
-
-
-echo "cat /etc/ssh/sshd_config > /etc/ssh/sshd_config.bak" > .local_script_$0
-
-if [[ $portChange =~ ^[Yy]$ ]];
-then
-  echo "sed \"s/.*Port.*/Port $portNum/\" /etc/ssh/sshd_config > temp" >> .local_script_$0
-  echo "cp temp /etc/ssh/sshd_config" >> .local_script_$0
-fi
 if [[ $rootLogin =~ ^[Yy]$ ]];then
-  echo "sed '0,/^.*PermitRootLogin.*$/s//PermitRootLogin no/' /etc/ssh/sshd_config" >> .local_script_$0
-
+    sed -i "s/.*PermitRootLogin.*/PermitRootLogin yes/g" ~/sshd_config
 fi
-if [[ $protocolChange =~ ^[Yy]$ ]];then
-  echo "sed -i \"s/^.*Protocol.*$/Protocol 2/\" /etc/ssh/sshd_config" >> .local_script_$0
 
+read -p "Quieres deshabilitar el acceso por contraseña? [Y/n]" -n 1 rootLogin
+printf "\n"
+if [[ $rootLogin =~ ^[Yy]$ ]];then
+    sed -i "s/.*PasswordAuthentication.*/PasswordAuthentication no/g" ~/sshd_config
 fi
-if [[ $privilegeSep =~ ^[Yy]$ ]];then
-  echo "sed -i \"s/^.*UsePrivilegeSeparation.*$/UsePrivilegeSeparation yes/\" /etc/ssh/sshd_config" >> .local_script_$0
 
-fi
+read -p "Quieres permitir el acceso con contraseña vacia? [Y/n]" -n 1 emptyPass
+printf "\n"
 if [[ $emptyPass =~ ^[Yy]$ ]];then
-  echo "sed -i \"s/^.*PermitEmptyPasswords.*$/PermitEmptyPasswords no/\" /etc/ssh/sshd_config" >> .local_script_$0
-
+  sed -i "s/.*PermitEmptyPasswords.*/PermitEmptyPasswords yes/g" ~/sshd_config
 fi
-if [[ $x11Forwarding =~ ^[Yy]$ ]];then
-  echo "sed -i \"s/^.*X11Forwarding.*$/X11Forwarding no/\" /etc/ssh/sshd_config" >> .local_script_$0
 
+read -p "Quieres permitir el acceso con clave publica? [Y/n]" -n 1 emptyPass
+printf "\n"
+if [[ $emptyPass =~ ^[Yy]$ ]];then
+    sed -i "s/.*AuthenticationMethods.*/AuthenticationMethods publickey/g" ~/sshd_config
+    sed -i "s/.*PubkeyAuthentication.*/PubkeyAuthentication yes/g" ~/sshd_config
 fi
+
+
+read -p "Quieres habilitar TCPKeepAlive para evitar los zombis?[Y/n]" -n 1 zombies
+printf "\n"
 if [[ $zombies =~ ^[Yy]$ ]];then
-  echo "sed -i \"s/^.*TCPKeepAlive.*$/TCPKeepAlive yes/\" /etc/ssh/sshd_config" >> .local_script_$0
-
+    sed -i "s/.*TCPKeepAlive.*/TCPKeepAlive yes/g" ~/sshd_config
 fi
 
-MYSCRIPT=`base64 -w0 .local_script_$0`
-ssh -t $username@$serverIP "echo $MYSCRIPT | base64 -d | sudo bash"
-rm .local_script_$0
-echo "Success"
-exit
+sudo cp ~/sshd_config /etc/ssh/sshd_config
+sudo rm -R ~/sshd_config
