@@ -160,6 +160,7 @@ function Basicos ()
 function ZSH()
 {
     sudo apt install git zsh -y > /dev/null 2>&1
+    # --quiet
     wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh > /dev/null 2>&1
 
     sudo git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions > /dev/null 2>&1
