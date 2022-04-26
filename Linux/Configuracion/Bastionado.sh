@@ -196,3 +196,9 @@ UFW
 truncate -s0 /etc/resolv.conf
 echo "nameserver 1.1.1.1" | sudo tee -a /etc/resolv.conf
 echo "nameserver 1.0.0.1" | sudo tee -a /etc/resolv.conf
+
+sysctl -p
+update-grub2
+systemctl restart systemd-timesyncd
+ufw --force enable
+service ssh restart
