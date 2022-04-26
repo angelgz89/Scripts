@@ -5,7 +5,7 @@
 
 read -p "Enter your server IP:" serverIP # prompt for server IP
 read -p "Enter your username(requires root privileges):" username # prompt for username
-printf "\nChanging the default SSH port is one of the easiest\n things you can do to help harden you servers security. \nIt will protect you from robots that are programmed \nto scan for port 22 openings, and commence \ntheir attack."
+printf "\nChanging the default SSH port is one of the easiest things you can do to help harden you servers security. \nIt will protect you from robots that are programmed \nto scan for port 22 openings, and commence \ntheir attack."
 printf "\n"
 read -p "Do you want to change default SSH port?[Y/n]" -n 1 portChange
 printf "\n"
