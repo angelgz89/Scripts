@@ -83,7 +83,7 @@ function Basicos ()
     else
         git config --global user.name angelgz89
         git config --global user.email agz2712@gmail.com
-        echo -e "${AMARILLO}[*]${endColour}${VERDE} GIT ya está instalado ${endColour}"
+        echo -e "${AMARILLO}[*]${endColour}${AZUL} GIT ya está instalado ${endColour}"
     fi
 
     #######################################################################################
@@ -93,7 +93,7 @@ function Basicos ()
         sudo apt install rsync -y > /dev/null 2>&1
         echo -e "${AMARILLO}[*]${endColour}${VERDE} Rsync Instalado ${endColour}"
     else
-        echo -e "${AMARILLO}[*]${endColour}${VERDE} Rsync ya está instalado ${endColour}"
+        echo -e "${AMARILLO}[*]${endColour}${AZUL} Rsync ya está instalado ${endColour}"
     fi
 
     #######################################################################################
@@ -103,17 +103,29 @@ function Basicos ()
         sudo apt install wget -y > /dev/null 2>&1
         echo -e "${AMARILLO}[*]${endColour}${VERDE} WGET Instalado ${endColour}"
 	else
-        echo -e "${AMARILLO}[*]${endColour}${VERDE} WGET ya está instalado ${endColour}"
+        echo -e "${AMARILLO}[*]${endColour}${AZUL} WGET ya está instalado ${endColour}"
     fi
 
     #######################################################################################
+
+    sudo dpkg -l | grep -i "htop" > /dev/null 2>&1
+	if [ "$(echo $?)" == "1" ]
+	then
+        sudo apt install htop -y > /dev/null 2>&1
+        echo -e "${AMARILLO}[*]${endColour}${VERDE} HTOP Instalado ${endColour}"
+	else
+        echo -e "${AMARILLO}[*]${endColour}${AZUL} HTOP ya está instalado ${endColour}"
+    fi
+
+    #######################################################################################
+
     sudo dpkg -l | grep -i "lm-sensors" > /dev/null 2>&1
 	if [ "$(echo $?)" == "1" ]
 	then
         sudo apt-get install lm-sensors -y > /dev/null 2>&1
         echo -e "${AMARILLO}[*]${endColour}${VERDE} Sensors Instalado ${endColour}"
 	else
-        echo -e "${AMARILLO}[*]${endColour}${VERDE} Sensors ya está instalado ${endColour}"
+        echo -e "${AMARILLO}[*]${endColour}${AZUL} Sensors ya está instalado ${endColour}"
     fi
 
     #######################################################################################
@@ -123,7 +135,7 @@ function Basicos ()
 		sudo apt install binutils -y > /dev/null 2>&1
 		echo -e "${AMARILLO}[*]${endColour}${VERDE} Binutils Instalado ${endColour}"
 	else
-        echo -e "${AMARILLO}[*]${endColour}${VERDE} Binutils ya está instalado ${endColour}"
+        echo -e "${AMARILLO}[*]${endColour}${AZUL} Binutils ya está instalado ${endColour}"
 	fi
 
     #######################################################################################
@@ -133,7 +145,7 @@ function Basicos ()
 		sudo apt install wakeonlan -y > /dev/null 2>&1
 		echo -e "${AMARILLO}[*]${endColour}${VERDE} WakeOnLan Instalado ${endColour}"
 	else
-        echo -e "${AMARILLO}[*]${endColour}${VERDE} WakeOnLan ya está instalado ${endColour}"
+        echo -e "${AMARILLO}[*]${endColour}${AZUL} WakeOnLan ya está instalado ${endColour}"
 	fi
 
     #######################################################################################
@@ -143,7 +155,7 @@ function Basicos ()
 		sudo apt install chromium-driver -y > /dev/null 2>&1
 		echo -e "${AMARILLO}[*]${endColour}${VERDE} Chronium-driver Instalado ${endColour}"
     else
-        echo -e "${AMARILLO}[*]${endColour}${VERDE} Chronium-driver ya está instalado ${endColour}"
+        echo -e "${AMARILLO}[*]${endColour}${AZUL} Chronium-driver ya está instalado ${endColour}"
 	fi
 
     #######################################################################################
@@ -153,7 +165,7 @@ function Basicos ()
 		sudo apt install net-tools -y > /dev/null 2>&1
 		echo -e "${AMARILLO}[*]${endColour}${VERDE} Net-tools Instalado ${endColour}"
     else
-        echo -e "${AMARILLO}[*]${endColour}${VERDE} Net-tools ya está instalado ${endColour}"
+        echo -e "${AMARILLO}[*]${endColour}${AZUL} Net-tools ya está instalado ${endColour}"
 	fi
 }
 
@@ -224,7 +236,7 @@ function Tilix ()
 		sudo apt install -y tilix > /dev/null 2>&1
 		echo -e "${AMARILLO}[*]${endColour}${VERDE} Tilix Instalado ${endColour}"
     else
-        echo -e "${AMARILLO}[*]${endColour}${VERDE} Tilix ya está instalado ${endColour}"
+        echo -e "${AMARILLO}[*]${endColour}${AZUL} Tilix ya está instalado ${endColour}"
 	fi
 }
 
@@ -236,7 +248,7 @@ function Gparted ()
 		sudo apt install gparted -y > /dev/null 2>&1
 		echo -e "${AMARILLO}[*]${endColour}${VERDE} Gparted Instalado ${endColour}"
     else
-        echo -e "${AMARILLO}[*]${endColour}${VERDE} Gparted ya está instalado ${endColour}"
+        echo -e "${AMARILLO}[*]${endColour}${AZUL} Gparted ya está instalado ${endColour}"
 	fi
 }
 
@@ -252,7 +264,7 @@ function Veracrypt ()
         actualizarlimpiar
         echo -e "${AMARILLO}[*]${endColour}${VERDE} Veracrypt Instalado ${endColour}"
     else
-        echo -e "${AMARILLO}[*]${endColour}${VERDE} Veracrypt ya está instalado ${endColour}"
+        echo -e "${AMARILLO}[*]${endColour}${AZUL} Veracrypt ya está instalado ${endColour}"
     fi
 }
 
@@ -264,7 +276,7 @@ function Nomacs ()
 		sudo apt install nomacs -y > /dev/null 2>&1
 		echo -e "${AMARILLO}[*]${endColour}${VERDE} Nomacs Instalado ${endColour}"
     else
-        echo -e "${AMARILLO}[*]${endColour}${VERDE} Nomacs ya está instalado ${endColour}"
+        echo -e "${AMARILLO}[*]${endColour}${AZUL} Nomacs ya está instalado ${endColour}"
 	fi
 }
 
@@ -276,7 +288,7 @@ function Utilidaddiscos ()
 		sudo apt install gnome-disk-utility -y > /dev/null 2>&1
 		echo -e "${AMARILLO}[*]${endColour}${VERDE} Utilidad de discos Instalada ${endColour}"
     else
-        echo -e "${AMARILLO}[*]${endColour}${VERDE} Utilidad de discos ya está instalado ${endColour}"
+        echo -e "${AMARILLO}[*]${endColour}${AZUL} Utilidad de discos ya está instalado ${endColour}"
 	fi
 }
 
@@ -287,22 +299,6 @@ function Chrome ()
     dpkg -i ~/google-chrome-stable_current_amd64.deb > /dev/null 2>&1
     echo -e "${AMARILLO}[*]${endColour}${VERDE} Chrome Instalado ${endColour}"
 }
-    
-
-function BastionadoIP6 ()
-{
-    sudo cp ./resources/sysctl.conf /etc/sysctl.conf
-    sudo cp ./resources/grub /etc/default/grub
-    echo -e "${AMARILLO}[*]${endColour}${VERDE} IP6 Bastionado${endColour}"
-}
-
-function BastionadoFail2Ban ()
-{
-    sudo apt install fail2ban -y > /dev/null 2>&1
-    # cp ./resources /etc/fail2ban/jail.conf
-    sudo systemctl restart fail2ban
-    echo -e "${AMARILLO}[*]${endColour}${VERDE} Fail2Ban Bastionado${endColour}"
-}
 
 function Gedit ()
 {
@@ -312,7 +308,7 @@ function Gedit ()
         sudo apt install gedit -y > /dev/null 2>&1
     	echo -e "${AMARILLO}[*]${endColour}${VERDE} Gedit Instalado ${endColour}"
 	else
-        echo -e "${AMARILLO}[*]${endColour}${VERDE} Gedit ya está instalado ${endColour}"
+        echo -e "${AMARILLO}[*]${endColour}${AZUL} Gedit ya está instalado ${endColour}"
 	fi
 }
 
@@ -346,6 +342,166 @@ function wakeonlan ()
     sudo systemctl daemon-reload
     sudo systemctl enable wol.service
     sudo systemctl start wol.service
+}
+
+#############################################################################################
+
+function BastionadoFail2Ban ()
+{
+    sudo apt install fail2ban -y > /dev/null 2>&1
+    # cp ./resources /etc/fail2ban/jail.conf
+    sudo systemctl restart fail2ban
+    echo -e "${AMARILLO}[*]${endColour}${VERDE} Fail2Ban Instalado${endColour}"
+
+
+    echo "BASTIONADO Fail2Ban"
+    sudo cp -r -f /etc/fail2ban/jail.conf /etc/fail2ban/jail.conf.bak
+    sudo cp -r -f /etc/fail2ban/jail.conf ~/jail.conf.bak
+
+    touch ~/jail.conf
+    echo '
+    # Fail2Ban jail base specification file
+    #
+    # Changes:  in most of the cases you should not modify this
+    #           file, but provide customizations in jail.local file,
+    #           or separate .conf files under jail.d/ directory, e.g.:
+    #
+    # HOW TO ACTIVATE JAILS:
+    #
+    # YOU SHOULD NOT MODIFY THIS FILE.
+    #
+    # It will probably be overwritten or improved in a distribution update.
+    #
+    # Provide customizations in a jail.local file or a jail.d/customisation.local.
+    # For example to change the default bantime for all jails and to enable the
+    # ssh-iptables jail the following (uncommented) would appear in the .local file.
+    # See man 5 jail.conf for details.
+    #
+    # [DEFAULT]
+    # bantime = 1h
+    #
+    # [ssh]
+    # enabled = true
+    #
+    # See jail.conf(5) man page for more information
+
+    [INCLUDES]
+
+    #before = paths-distro.conf
+
+    # The DEFAULT allows a global definition of the options. They can be overridden
+    # in each jail afterwards.
+
+    [DEFAULT]
+
+    #
+    # MISCELLANEOUS OPTIONS
+    #
+
+    # "ignorself" specifies whether the local resp. own IP addresses should be ignored
+    # (default is true). Fail2ban will not ban a host which matches such addresses.
+    #ignorself = true
+
+    # "ignoreip" can be a list of IP addresses, CIDR masks or DNS hosts. Fail2ban
+    # will not ban a host which matches an address in this list. Several addresses
+    # can be defined using space (and/or comma) separator.
+    ignoreip = 127.0.0.1/8 ::1
+
+    # External command that will take an tagged arguments to ignore, e.g. <ip>,
+    # and return true if the IP is to be ignored. False otherwise.
+    #
+    # ignorecommand = /path/to/command <ip>
+    ignorecommand =
+
+    # "bantime" is the number of seconds that a host is banned.
+    bantime  = 1h
+
+    # A host is banned if it has generated "maxretry" during the last "findtime"
+    # seconds.
+    findtime  = 10m
+
+    # "maxretry" is the number of failures before a host get banned.
+    maxretry = 3
+
+    # "backend" specifies the backend used to get files modification.
+    # Available options are "pyinotify", "gamin", "polling", "systemd" and "auto".
+    # This option can be overridden in each jail as well.
+    #
+    # pyinotify: requires pyinotify (a file alteration monitor) to be installed.
+    #              If pyinotify is not installed, Fail2ban will use auto.
+    # gamin:     requires Gamin (a file alteration monitor) to be installed.
+    #              If Gamin is not installed, Fail2ban will use auto.
+    # polling:   uses a polling algorithm which does not require external libraries.
+    # systemd:   uses systemd python library to access the systemd journal.
+    #              Specifying "logpath" is not valid for this backend.
+    #              See "journalmatch" in the jails associated filter config
+    # auto:      will try to use the following backends, in order:
+    #              pyinotify, gamin, polling.
+    #
+    # Note: if systemd backend is chosen as the default but you enable a jail
+    #       for which logs are present only in its own log files, specify some other
+    #       backend for that jail (e.g. polling) and provide empty value for
+    #       journalmatch. See https://github.com/fail2ban/fail2ban/issues/959#issuecomment-74901200
+    backend = auto
+
+    # "usedns" specifies if jails should trust hostnames in logs,
+    #   warn when DNS lookups are performed, or ignore all hostnames in logs
+    #
+    # yes:   if a hostname is encountered, a DNS lookup will be performed.
+    # warn:  if a hostname is encountered, a DNS lookup will be performed,
+    #        but it will be logged as a warning.
+    # no:    if a hostname is encountered, will not be used for banning,
+    #        but it will be logged as info.
+    # raw:   use raw value (no hostname), allow use it for no-host filters/actions (example user)
+    usedns = warn
+
+    # "logencoding" specifies the encoding of the log files handled by the jail
+    #   This is used to decode the lines from the log file.
+    #   Typical examples:  "ascii", "utf-8"
+    #
+    #   auto:   will use the system locale setting
+    logencoding = auto
+
+    # "enabled" enables the jails.
+    #  By default all jails are disabled, and it should stay this way.
+    #  Enable only relevant to your setup jails in your .local or jail.d/*.conf
+    #
+    # true:  jail will be enabled and log files will get monitored for changes
+    # false: jail is not enabled
+    enabled = false
+
+
+    #
+    # JAILS
+    #
+
+    [ssh]
+
+    # To use more aggressive sshd modes set filter parameter "mode" in jail.local:
+    # normal (default), ddos, extra or aggressive (combines all).
+    # See "tests/files/logs/sshd" or "filter.d/sshd.conf" for usage example and details.
+    filter  = sshd
+    action  = iptables[name=ssh, port=ssh]
+    logpath = /var/log/auth.log
+
+
+    # Jail for more extended banning of persistent abusers
+    # !!! WARNINGS !!!
+    # 1. Make sure that your loglevel specified in fail2ban.conf/.local
+    #    is not at DEBUG level -- which might then cause fail2ban to fall into
+    #    an infinite loop constantly feeding itself with non-informative lines
+    # 2. Increase dbpurgeage defined in fail2ban.conf to e.g. 648000 (7.5 days)
+    #    to maintain entries for failed logins for sufficient amount of time
+    [recidive]
+
+    filter   = recidive
+    action   = iptables-allports[name=recidive]
+    logpath  = /var/log/fail2ban.log
+    bantime  = 1w
+    findtime = 1d
+    ' > ~/jail.conf
+    sudo cp ~/jail.conf /etc/fail2ban/jail.conf
+    sudo rm -R ~/jail.conf
 }
 
 function BastionadoSSH ()
@@ -538,7 +694,12 @@ function UFW ()
     fi
 }
 
-
+function nameservers ()
+{
+    sudo truncate -s0 /etc/resolv.conf > /dev/null 2>&1
+    echo "nameserver 1.1.1.1" | sudo tee -a /etc/resolv.conf > /dev/null 2>&1
+    echo "nameserver 1.0.0.1" | sudo tee -a /etc/resolv.conf > /dev/null 2>&1
+}
 #############################################################################################
 
 
@@ -562,11 +723,6 @@ actualizarlimpiar
 #Temas
 Papirus
 
-
-#Bastionados
-#BastionadoIP6
-BastionadoFail2Ban
-
 #Configuracion
 wakeonlan
 
@@ -577,13 +733,12 @@ sudo rm -R ~/Plantillas
 sudo rm -R ~/Público
 sudo rm -R ~/Vídeos
 
+#BASTIONADOS
 BastionadoSSH
 BastionadoCTL
+BastionadoFail2Ban
 UFW
-
-sudo truncate -s0 /etc/resolv.conf > /dev/null 2>&1
-echo "nameserver 1.1.1.1" | sudo tee -a /etc/resolv.conf > /dev/null 2>&1
-echo "nameserver 1.0.0.1" | sudo tee -a /etc/resolv.conf > /dev/null 2>&1
+nameservers
 
 sudo sysctl -p > /dev/null 2>&1
 sudo update-grub2 > /dev/null 2>&1
