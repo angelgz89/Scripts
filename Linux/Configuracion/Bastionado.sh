@@ -4,6 +4,7 @@
 
 function BastionadoSSH ()
 {
+    echo "BASTIONADO SSH"
     sudo cp -r -f /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
     sudo cp -r -f /etc/ssh/sshd_config ~/sshd_config.bak
 
@@ -108,11 +109,12 @@ function BastionadoSSH ()
     sudo cp ~/sshd_config /etc/ssh/sshd_config
     sudo rm -R ~/sshd_config
 
-    service ssh restart
+    sudo service ssh restart
 }
 
 function BastionadoCTL () 
 {
+    echo "BASTIONADO CTL"
     #COPIA DE SEGURIDAD
     sudo cp -r -f /etc/sysctl.conf /etc/sysctl.conf.bak
     sudo cp -r -f /etc/sysctl.conf ~/sysctl.conf.bak
@@ -193,12 +195,12 @@ BastionadoSSH
 BastionadoCTL
 UFW
 
-truncate -s0 /etc/resolv.conf
+sudo truncate -s0 /etc/resolv.conf
 echo "nameserver 1.1.1.1" | sudo tee -a /etc/resolv.conf
 echo "nameserver 1.0.0.1" | sudo tee -a /etc/resolv.conf
 
 sysctl -p
 update-grub2
-systemctl restart systemd-timesyncd
+sudo systemctl restart systemd-timesyncd
 ufw --force enable
-service ssh restart
+sudo service ssh restart
