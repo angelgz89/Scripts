@@ -14,5 +14,4 @@ do
 done
 
 cat ipsbloqueadas.txt | uniq >> IPbloqueadas.txt
-#cat IPbloqueadas.txt | uniq >> IPbloqueadas.txt
 rm ipsbloqueadas.txt
