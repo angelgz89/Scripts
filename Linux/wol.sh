@@ -8,17 +8,15 @@ then
         wakeonlan 3C:7C:3F:DA:4C:0D
 fi
 
+# echo "Quieres despertar Macro server? (s/n))"
+# read a
 
+# if [ $a = "s" ];
+# then
+# 	wakeonlan FC:34:97:66:DE:0E
+# fi
 
-echo "Quieres despertar Macro server? (s/n))"
-read a
-
-if [ $a = "s" ];
-then
-	wakeonlan FC:34:97:66:DE:0E
-fi
-
-echo "Quieres despertar MiniPc? (s/n))"
+echo "Quieres despertar MiniServer? (s/n))"
 read b
 
 if [ $b = "s" ];
@@ -27,7 +25,7 @@ then
 	wakeonlan 1C:83:41:28:1C:6E
 fi
 
-echo "Quieres despertar MiniMacroServer? (s/n))"
+echo "Quieres despertar Server? (s/n))"
 read c
 
 if [ $c = "s" ];
